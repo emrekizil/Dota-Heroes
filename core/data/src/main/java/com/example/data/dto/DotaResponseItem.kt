@@ -67,21 +67,21 @@ data class DotaResponseItem(
     @SerializedName("null_win")
     val nullWin: Int,
     @SerializedName("1_pick")
-    val pick: Int,
+    val pick1: Int,
     @SerializedName("2_pick")
-    val pick: Int,
+    val pick2: Int,
     @SerializedName("3_pick")
-    val pick: Int,
+    val pick3: Int,
     @SerializedName("4_pick")
-    val pick: Int,
+    val pick4: Int,
     @SerializedName("5_pick")
-    val pick: Int,
+    val pick5: Int,
     @SerializedName("6_pick")
-    val pick: Int,
+    val pick6: Int,
     @SerializedName("7_pick")
-    val pick: Int,
+    val pick7: Int,
     @SerializedName("8_pick")
-    val pick: Int,
+    val pick8: Int,
     @SerializedName("primary_attr")
     val primaryAttr: String,
     @SerializedName("pro_ban")
@@ -103,19 +103,19 @@ data class DotaResponseItem(
     @SerializedName("turn_rate")
     val turnRate: Double,
     @SerializedName("1_win")
-    val win: Int,
+    val win1: Int,
     @SerializedName("2_win")
-    val win: Int,
+    val win2: Int,
     @SerializedName("3_win")
-    val win: Int,
+    val win3: Int,
     @SerializedName("4_win")
-    val win: Int,
+    val win4: Int,
     @SerializedName("5_win")
-    val win: Int,
+    val win5: Int,
     @SerializedName("6_win")
-    val win: Int,
+    val win6: Int,
     @SerializedName("7_win")
-    val win: Int,
+    val win7: Int,
     @SerializedName("8_win")
-    val win: Int
+    val win8: Int
 )
