@@ -36,6 +36,13 @@ android {
 
 dependencies {
 
+    implementation project(path:':core:data')
+    implementation project(path:':core:ui')
+    implementation project(path:':core:common')
+    implementation project(path:':core:domain')
+    implementation project(path:':feature:home')
+    implementation project(path:':navigation')
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
@@ -43,7 +50,14 @@ dependencies {
 
     //Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    //Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

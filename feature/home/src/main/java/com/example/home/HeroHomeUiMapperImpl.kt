@@ -3,8 +3,9 @@ package com.example.home
 import com.example.common.mapper.HeroListMapper
 import com.example.domain.entity.HeroEntity
 import com.example.ui.HomeUiData
+import javax.inject.Inject
 
-class HeroHomeUiMapperImpl : HeroListMapper<HeroEntity,HomeUiData> {
+class HeroHomeUiMapperImpl @Inject constructor() : HeroListMapper<HeroEntity,HomeUiData> {
     override fun map(input: List<HeroEntity>?): List<HomeUiData> {
         return input?.map {
             HomeUiData(
