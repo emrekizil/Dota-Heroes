@@ -20,7 +20,7 @@ class HomeUiComponent @JvmOverloads constructor(
     }
 
     fun setHeroData(homeUiData: HomeUiData){
-        binding.heroImage.loadImage(homeUiData.img)
+        binding.heroImage.loadImage("https://api.opendota.com"+homeUiData.img)
         binding.heroName.text = homeUiData.localizedName
     }
 }
