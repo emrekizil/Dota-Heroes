@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.ui.HomeUiData
+import com.example.ui.extension.observeTextChanges
+import com.example.ui.extension.okWith
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -34,9 +38,19 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeTextChanges()
         observeUiState()
     }
 
+    private fun observeTextChanges() {
+        binding.searchEditText.observeTextChanges()
+            .filter { it okWith MINIMUM_SEARCH_LENGTH }
+            .debounce(MILLISECONDS)
+            .distinctUntilChanged()
+            .onEach {
+                viewModel.getAllHero()
+            }.launchIn(lifecycleScope)
+    }
 
 
     private fun observeUiState(){
@@ -58,6 +72,11 @@ class HomeFragment : Fragment() {
 
     private fun handleSuccessUiState(data: List<HomeUiData>) {
         adapter.updateItems(data)
+    }
+
+    companion object{
+        private const val MILLISECONDS = 200L
+        private const val MINIMUM_SEARCH_LENGTH = 1
     }
 
 
