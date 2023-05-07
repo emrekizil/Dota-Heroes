@@ -14,6 +14,7 @@ import com.example.ui.extension.okWith
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.*
 
+
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
@@ -72,6 +73,11 @@ class HomeFragment : Fragment() {
 
     private fun handleSuccessUiState(data: List<HomeUiData>) {
         adapter.updateItems(data)
+    }
+    private fun initView(){
+        binding.optionsIcon.setOnClickListener {
+
+        }
     }
 
     companion object{

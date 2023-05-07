@@ -9,5 +9,13 @@
         android:id="@+id/homeFragment"
         android:name="com.example.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_filterDialogFragment"
+            app:destination="@id/filterDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/filterDialogFragment"
+        android:name="com.example.home.FilterDialogFragment"
+        android:label="FilterDialogFragment" />
 </navigation>

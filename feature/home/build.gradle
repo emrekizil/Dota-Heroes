@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id "androidx.navigation.safeargs"
 }
 
 android {
@@ -36,10 +37,12 @@ android {
 }
 
 dependencies {
+
     implementation project(path: ":core:ui")
     implementation project(path: ":core:common")
     implementation project(path: ":core:domain")
     implementation project(path: ':navigation')
+
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
