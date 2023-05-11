@@ -9,51 +9,55 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
+
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/filter_hero"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:text="@string/filter_hero"/>
+            android:textStyle="bold" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:text="@string/primary_attribute"/>
+            android:text="@string/primary_attribute"
+            android:textSize="22sp" />
+
         <CheckBox
             android:id="@+id/strength_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/strength"/>
+            android:text="@string/strength" />
+
         <CheckBox
             android:id="@+id/agility_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/agility"/>
+            android:text="@string/agility" />
+
         <CheckBox
             android:id="@+id/intelligence_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/intelligence"/>
+            android:text="@string/intelligence" />
+
         <CheckBox
             android:id="@+id/none_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/none"/>
+            android:text="@string/none" />
 
         <ImageButton
             android:id="@+id/check_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/check_icon"
             android:layout_gravity="end"
             android:backgroundTint="@color/bar_color"
-            />
+            android:src="@drawable/check_icon" />
 
     </LinearLayout>
-
-
 
 
 </FrameLayout>

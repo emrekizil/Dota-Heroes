@@ -17,5 +17,9 @@
     <dialog
         android:id="@+id/filterDialogFragment"
         android:name="com.example.home.FilterDialogFragment"
-        android:label="FilterDialogFragment" />
+        android:label="FilterDialogFragment" >
+        <action
+            android:id="@+id/action_filterDialogFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </dialog>
 </navigation>

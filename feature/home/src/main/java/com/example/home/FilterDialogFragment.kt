@@ -23,6 +23,12 @@ class FilterDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.checkButton.setOnClickListener {
+            navigateToHome()
+        }
+    }
+
+    private fun navigateToHome() {
 
     }
 
