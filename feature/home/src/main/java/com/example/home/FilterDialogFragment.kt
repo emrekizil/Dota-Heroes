@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import com.example.home.databinding.FragmentFilterDialogBinding
 
 
@@ -29,7 +30,8 @@ class FilterDialogFragment : DialogFragment() {
     }
 
     private fun navigateToHome() {
-
+        val action = FilterDialogFragmentDirections.actionFilterDialogFragmentToHomeFragment()
+        findNavController().navigate(action)
     }
 
 }
