@@ -1,12 +1,9 @@
 package com.example.home
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.navigation.fragment.findNavController
 import com.example.home.databinding.FragmentFilterDialogBinding
 
 
@@ -14,24 +11,19 @@ class FilterDialogFragment : DialogFragment() {
 
     private lateinit var binding : FragmentFilterDialogBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        binding = FragmentFilterDialogBinding.inflate(layoutInflater)
-        return binding.root
+    companion object {
+        const val TAG = "FilterDialogFragment"
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.checkButton.setOnClickListener {
-            navigateToHome()
-        }
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return activity?.let {
+            val builder = AlertDialog.Builder(it)
+            binding = FragmentFilterDialogBinding.inflate(layoutInflater)
+            builder.setView(binding.root)
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
     }
 
-    private fun navigateToHome() {
-        val action = FilterDialogFragmentDirections.actionFilterDialogFragmentToHomeFragment()
-        findNavController().navigate(action)
-    }
+
 
 }

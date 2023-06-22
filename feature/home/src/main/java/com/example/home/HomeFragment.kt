@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.ui.HomeUiData
 import com.example.ui.extension.observeTextChanges
@@ -79,8 +77,9 @@ class HomeFragment : Fragment() {
     }
     private fun initView(){
         binding.optionsIcon.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToFilterDialogFragment()
-            findNavController().navigate(action)
+            FilterDialogFragment().show(
+                childFragmentManager,FilterDialogFragment.TAG
+            )
         }
     }
 
@@ -88,8 +87,5 @@ class HomeFragment : Fragment() {
         private const val MILLISECONDS = 200L
         private const val MINIMUM_SEARCH_LENGTH = 1
     }
-
-
-
 
 }
