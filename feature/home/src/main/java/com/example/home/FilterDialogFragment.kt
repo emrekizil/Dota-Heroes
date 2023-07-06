@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.widget.CheckBox
 import androidx.fragment.app.DialogFragment
 import com.example.home.databinding.FragmentFilterDialogBinding
 import com.example.ui.extension.reStateAllCheckbox
@@ -23,6 +24,9 @@ class FilterDialogFragment : DialogFragment() {
             binding = FragmentFilterDialogBinding.inflate(layoutInflater)
             builder.setView(binding.root)
             binding.checkButton.setOnClickListener {
+                val listOfCheckBox= listOf(binding.noneCheckbox,binding.strengthCheckbox,binding.agilityCheckbox,binding.intelligenceCheckbox)
+                val x:CheckBox? = returnCheckedBox(listOfCheckBox)
+                println(x?.text)
                 dismiss()
             }
             binding.agilityCheckbox.reStateAllCheckbox(binding.intelligenceCheckbox,binding.strengthCheckbox,binding.noneCheckbox)
@@ -32,5 +36,10 @@ class FilterDialogFragment : DialogFragment() {
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
+
+    private fun returnCheckedBox(listOfCheckBox: List<CheckBox>): CheckBox? {
+        return listOfCheckBox.find { it.isChecked }
+    }
+
 
 }
