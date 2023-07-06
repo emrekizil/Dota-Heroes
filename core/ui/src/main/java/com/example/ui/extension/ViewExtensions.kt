@@ -1,5 +1,6 @@
 package com.example.ui.extension
 
+import android.widget.CheckBox
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageView
 import coil.load
@@ -33,5 +34,15 @@ fun AppCompatEditText.observeTextChanges(): Flow<String> {
 fun AppCompatImageView.loadImage(imageUrl:String){
     load(imageUrl){
         scale(Scale.FILL)
+    }
+}
+
+fun CheckBox.reStateAllCheckbox(checkbox1:CheckBox,checkbox2:CheckBox,checkbox3:CheckBox){
+    this.setOnCheckedChangeListener { compoundButton, isChecked ->
+        if (isChecked){
+            checkbox1.isChecked = false
+            checkbox2.isChecked= false
+            checkbox3.isChecked= false
+        }
     }
 }

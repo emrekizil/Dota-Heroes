@@ -6,6 +6,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.example.home.databinding.FragmentFilterDialogBinding
+import com.example.ui.extension.reStateAllCheckbox
 
 
 class FilterDialogFragment : DialogFragment() {
@@ -22,17 +23,14 @@ class FilterDialogFragment : DialogFragment() {
             binding = FragmentFilterDialogBinding.inflate(layoutInflater)
             builder.setView(binding.root)
             binding.checkButton.setOnClickListener {
-                println("Emre")
                 dismiss()
             }
+            binding.agilityCheckbox.reStateAllCheckbox(binding.intelligenceCheckbox,binding.strengthCheckbox,binding.noneCheckbox)
+            binding.noneCheckbox.reStateAllCheckbox(binding.intelligenceCheckbox,binding.strengthCheckbox,binding.agilityCheckbox)
+            binding.strengthCheckbox.reStateAllCheckbox(binding.intelligenceCheckbox,binding.agilityCheckbox,binding.noneCheckbox)
+            binding.intelligenceCheckbox.reStateAllCheckbox(binding.agilityCheckbox,binding.strengthCheckbox,binding.noneCheckbox)
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
-
-
-
-
-
-
 
 }
