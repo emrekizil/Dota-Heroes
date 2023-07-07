@@ -4,48 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".FilterDialogFragment">
+    tools:context=".FilterDialogFragment"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="5dp"
+   >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/filter_hero"
             android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/primary_attribute"
+            android:layout_marginBottom="10dp"
             android:textSize="22sp" />
 
         <CheckBox
             android:id="@+id/strength_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
             android:text="@string/strength" />
 
         <CheckBox
             android:id="@+id/agility_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
             android:text="@string/agility" />
 
         <CheckBox
             android:id="@+id/intelligence_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
             android:text="@string/intelligence" />
 
         <CheckBox
             android:id="@+id/none_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
             android:text="@string/none" />
 
         <ImageButton
@@ -53,6 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_marginTop="15dp"
             android:backgroundTint="@color/bar_color"
             android:src="@drawable/check_icon" />
 

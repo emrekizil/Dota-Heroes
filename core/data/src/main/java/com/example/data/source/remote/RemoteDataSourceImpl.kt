@@ -1,4 +1,4 @@
-package com.example.data.source
+package com.example.data.source.remote
 
 import com.example.common.NetworkResponseState
 import com.example.data.api.DotaApi

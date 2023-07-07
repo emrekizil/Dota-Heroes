@@ -3,7 +3,7 @@ package com.example.data.repository
 import com.example.common.NetworkResponseState
 import com.example.common.di.IoDispatcher
 import com.example.data.mapper.HeroListMapperImpl
-import com.example.data.source.RemoteDataSource
+import com.example.data.source.remote.RemoteDataSource
 import com.example.domain.entity.HeroEntity
 import com.example.domain.repository.DotaRepository
 import kotlinx.coroutines.CoroutineDispatcher

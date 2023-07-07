@@ -1,7 +1,7 @@
 package com.example.data.di
 
-import com.example.data.source.RemoteDataSource
-import com.example.data.source.RemoteDataSourceImpl
+import com.example.data.source.remote.RemoteDataSource
+import com.example.data.source.remote.RemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,5 +14,5 @@ abstract class DataSourceModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindRemoteDataSource(remoteDataSourceImpl: RemoteDataSourceImpl):RemoteDataSource
+    abstract fun bindRemoteDataSource(remoteDataSourceImpl: RemoteDataSourceImpl): RemoteDataSource
 }

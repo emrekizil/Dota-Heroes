@@ -26,7 +26,6 @@ class FilterDialogFragment : DialogFragment() {
             binding.checkButton.setOnClickListener {
                 val listOfCheckBox= listOf(binding.noneCheckbox,binding.strengthCheckbox,binding.agilityCheckbox,binding.intelligenceCheckbox)
                 val x:CheckBox? = returnCheckedBox(listOfCheckBox)
-                println(x?.text)
                 dismiss()
             }
             binding.agilityCheckbox.reStateAllCheckbox(binding.intelligenceCheckbox,binding.strengthCheckbox,binding.noneCheckbox)
