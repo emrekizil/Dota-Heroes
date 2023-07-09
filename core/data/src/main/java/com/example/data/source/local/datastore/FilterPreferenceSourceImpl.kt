@@ -16,9 +16,10 @@ import javax.inject.Inject
 class FilterPreferenceSourceImpl @Inject constructor(private val dataStore: DataStore<Preferences>) :
     FilterPreferenceSource {
 
-    override suspend fun saveAttributePreference(attributePreference: String) {
+    override suspend fun saveAttributePreference(filterPreference: String) {
+        println(filterPreference)
         dataStore.edit { preferences ->
-            preferences[PreferencesKeys.SELECTED_ATTRIBUTE] = attributePreference
+            preferences[PreferencesKeys.SELECTED_ATTRIBUTE] = filterPreference
         }
     }
 

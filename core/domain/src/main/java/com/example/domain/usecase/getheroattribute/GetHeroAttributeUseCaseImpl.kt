@@ -4,9 +4,9 @@ import com.example.domain.repository.DotaRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetHeroAttributeImpl @Inject constructor(
+class GetHeroAttributeUseCaseImpl @Inject constructor(
     private val repository: DotaRepository
-) : GetHeroAttribute {
+) : GetHeroAttributeUseCase {
     override fun invoke(): Flow<String> =
         repository.getAttributePreference()
 }

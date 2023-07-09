@@ -1,5 +1,5 @@
 package com.example.domain.usecase.setheroattribute
 
-interface SetHeroAttribute {
+interface SetHeroAttributeUseCase {
     suspend operator fun invoke(heroAttribute:String)
 }

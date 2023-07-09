@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.home.databinding.FragmentHomeBinding
+import com.example.home.dialog.FilterDialogFragment
 import com.example.ui.HomeUiData
 import com.example.ui.extension.observeTextChanges
 import com.example.ui.extension.okWith
@@ -78,7 +79,7 @@ class HomeFragment : Fragment() {
     private fun initView(){
         binding.optionsIcon.setOnClickListener {
             FilterDialogFragment().show(
-                childFragmentManager,FilterDialogFragment.TAG
+                childFragmentManager, FilterDialogFragment.TAG
             )
         }
     }
