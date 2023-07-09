@@ -1,6 +1,8 @@
 package com.example.data.source.local.datastore
 
+import kotlinx.coroutines.flow.Flow
+
 interface FilterPreferenceSource {
-    suspend fun saveFilterPreference(filterPreference:String)
-    fun getFilterPreference():String
+    suspend fun saveAttributePreference(filterPreference:String)
+    fun getAttributePreference(): Flow<String>
 }

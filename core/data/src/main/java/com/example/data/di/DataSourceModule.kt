@@ -1,5 +1,7 @@
 package com.example.data.di
 
+import com.example.data.source.local.datastore.FilterPreferenceSource
+import com.example.data.source.local.datastore.FilterPreferenceSourceImpl
 import com.example.data.source.remote.RemoteDataSource
 import com.example.data.source.remote.RemoteDataSourceImpl
 import dagger.Binds
@@ -15,4 +17,8 @@ abstract class DataSourceModule {
     @Binds
     @ViewModelScoped
     abstract fun bindRemoteDataSource(remoteDataSourceImpl: RemoteDataSourceImpl): RemoteDataSource
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindLocalDataStoreSource(filterPreferenceSourceImpl: FilterPreferenceSourceImpl):FilterPreferenceSource
 }

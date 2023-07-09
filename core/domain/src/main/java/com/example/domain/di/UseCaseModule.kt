@@ -1,7 +1,7 @@
 package com.example.domain.di
 
-import com.example.domain.usecase.GetAllHeroesUseCase
-import com.example.domain.usecase.GetAllHeroesUseCaseImpl
+import com.example.domain.usecase.getallheroes.GetAllHeroesUseCase
+import com.example.domain.usecase.getallheroes.GetAllHeroesUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

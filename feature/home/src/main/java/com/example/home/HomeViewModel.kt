@@ -8,7 +8,7 @@ import com.example.common.NetworkResponseState
 import com.example.common.di.IoDispatcher
 import com.example.common.mapper.HeroListMapper
 import com.example.domain.entity.HeroEntity
-import com.example.domain.usecase.GetAllHeroesUseCase
+import com.example.domain.usecase.getallheroes.GetAllHeroesUseCase
 import com.example.ui.HomeUiData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher

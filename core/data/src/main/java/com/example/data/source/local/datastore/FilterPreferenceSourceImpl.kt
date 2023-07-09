@@ -1,21 +1,42 @@
 package com.example.data.source.local.datastore
 
-import android.content.Context
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
+import androidx.datastore.preferences.core.stringPreferencesKey
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.map
+import java.io.IOException
+import javax.inject.Inject
 
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "hero_preferences")
+class FilterPreferenceSourceImpl @Inject constructor(private val dataStore: DataStore<Preferences>) :
+    FilterPreferenceSource {
 
-class FilterPreferenceSourceImpl : FilterPreferenceSource {
-
-
-    override suspend fun saveFilterPreference(filterPreference: String) {
-        TODO("Not yet implemented")
+    override suspend fun saveAttributePreference(attributePreference: String) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.SELECTED_ATTRIBUTE] = attributePreference
+        }
     }
 
-    override fun getFilterPreference(): String {
-        TODO("Not yet implemented")
+    override fun getAttributePreference(): Flow<String> =
+        dataStore.data.catch { exception ->
+            if (exception is IOException) {
+                Log.e("Error", "Error reading preferences", exception)
+                emit(emptyPreferences())
+            } else {
+                throw exception
+            }
+        }.map { preferences ->
+            preferences[PreferencesKeys.SELECTED_ATTRIBUTE]
+                ?: ""
+        }
+
+    private object PreferencesKeys {
+        val SELECTED_ATTRIBUTE = stringPreferencesKey("attribute")
     }
+
 }

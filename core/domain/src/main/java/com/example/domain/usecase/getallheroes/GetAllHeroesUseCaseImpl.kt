@@ -1,4 +1,4 @@
-package com.example.domain.usecase
+package com.example.domain.usecase.getallheroes
 
 import com.example.common.NetworkResponseState
 import com.example.domain.entity.HeroEntity
