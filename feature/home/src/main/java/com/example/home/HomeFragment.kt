@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.dialog.FilterDialogFragment
+import com.example.home.dialog.FilterDialogViewModel
 import com.example.ui.HomeUiData
 import com.example.ui.extension.observeTextChanges
 import com.example.ui.extension.okWith
@@ -22,6 +23,8 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel by viewModels<HomeViewModel>()
+
+    private val anotherViewModel by viewModels<FilterDialogViewModel>()
 
     private val adapter :HeroRecyclerViewAdapter by lazy {
         HeroRecyclerViewAdapter()
@@ -43,6 +46,7 @@ class HomeFragment : Fragment() {
         observeTextChanges()
         observeUiState()
         initView()
+        observeState()
     }
 
     private fun observeTextChanges() {
@@ -81,6 +85,14 @@ class HomeFragment : Fragment() {
             FilterDialogFragment().show(
                 childFragmentManager, FilterDialogFragment.TAG
             )
+        }
+    }
+
+    private fun observeState() {
+        anotherViewModel.getHeroAttribute()
+        anotherViewModel.heroAttribute.observe(viewLifecycleOwner){
+            println(it.toString())
+            println("burdayım")
         }
     }
 

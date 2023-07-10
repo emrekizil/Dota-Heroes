@@ -21,8 +21,7 @@ class FilterDialogViewModel @Inject constructor(
 ): ViewModel() {
 
     private val _heroAttribute = MutableLiveData<String>()
-
-    val heroAttribute get() : LiveData<String> = _heroAttribute
+    val heroAttribute : LiveData<String> get()  = _heroAttribute
 
     fun setHeroAttribute(heroAttribute:String){
         viewModelScope.launch(ioDispatcher) {

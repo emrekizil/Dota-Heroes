@@ -47,19 +47,6 @@ class FilterDialogFragment : DialogFragment() {
         println("emre")
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        observeState()
-    }
-
-    private fun observeState() {
-        viewModel.getHeroAttribute()
-        viewModel.heroAttribute.observe(viewLifecycleOwner){
-            println(it.toString())
-
-        }
-    }
-
     private fun returnCheckedBox(listOfCheckBox: List<CheckBox>): CheckBox? {
         return listOfCheckBox.find { it.isChecked }
     }
