@@ -12,7 +12,10 @@ import com.example.domain.usecase.getallheroes.GetAllHeroesUseCase
 import com.example.ui.HomeUiData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.example.ui.R as coreUiRes
@@ -24,22 +27,36 @@ class HomeViewModel @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    private val _heroHomeUiState = MutableLiveData<HomeUiState>()
-    val heroHomeUiState :LiveData<HomeUiState> get() = _heroHomeUiState
+    private val _heroHomeUiState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
+
+    val heroHomeUiState = _heroHomeUiState.asStateFlow()
 
 
     fun getAllHero(){
         viewModelScope.launch(ioDispatcher) {
-            getAllHeroesUseCase().collectLatest {
-                when(it){
+            getAllHeroesUseCase().collectLatest {value->
+                when(value){
                     is NetworkResponseState.Loading ->{
-                        _heroHomeUiState.postValue(HomeUiState.Loading)
+                        //_heroHomeUiState.postValue(HomeUiState.Loading)
+                        _heroHomeUiState.update {
+                            HomeUiState.Loading
+                        }
                     }
                     is NetworkResponseState.Success->{
-                        _heroHomeUiState.postValue(HomeUiState.Success(heroListMapper.map(it.result)))
+                       // _heroHomeUiState.postValue(HomeUiState.Success(heroListMapper.map(it.result)))
+                        _heroHomeUiState.update {
+                            HomeUiState.Success(heroListMapper.map(
+                                value.result
+                            ))
+                        }
                     }
                     is NetworkResponseState.Error ->{
-                        _heroHomeUiState.postValue(HomeUiState.Error(coreUiRes.string.error))
+                       // _heroHomeUiState.postValue(HomeUiState.Error(coreUiRes.string.error))
+                        _heroHomeUiState.update {
+                            HomeUiState.Error(
+                                coreUiRes.string.error
+                            )
+                        }
                     }
                 }
             }

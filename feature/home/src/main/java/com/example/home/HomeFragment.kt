@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.dialog.FilterDialogFragment
 import com.example.home.dialog.FilterDialogViewModel
@@ -15,6 +17,7 @@ import com.example.ui.extension.observeTextChanges
 import com.example.ui.extension.okWith
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -62,7 +65,7 @@ class HomeFragment : Fragment() {
 
     private fun observeUiState(){
         viewModel.getAllHero()
-        viewModel.heroHomeUiState.observe(viewLifecycleOwner){
+       /* viewModel.heroHomeUiState.observe(viewLifecycleOwner){
             when(it){
                 is HomeUiState.Success->{
                     handleSuccessUiState(it.data)
@@ -74,7 +77,26 @@ class HomeFragment : Fragment() {
 
                 }
             }
+        }*/
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.heroHomeUiState.collect{
+                    when(it){
+                        is HomeUiState.Success->{
+                            handleSuccessUiState(it.data)
+                        }
+                        is HomeUiState.Loading->{
+
+                        }
+                        is HomeUiState.Error->{
+
+                        }
+                    }
+                }
+            }
         }
+
     }
 
     private fun handleSuccessUiState(data: List<HomeUiData>) {
