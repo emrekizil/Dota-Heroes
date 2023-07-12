@@ -7,7 +7,11 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetAllHeroesUseCaseImpl @Inject constructor(
-   private val repository: DotaRepository
+    private val repository: DotaRepository,
 ) : GetAllHeroesUseCase {
-    override fun invoke(): Flow<NetworkResponseState<List<HeroEntity>>> = repository.getAllHeroes()
+    override fun invoke(
+        heroName: String,
+        heroAttribute: String?
+    ): Flow<NetworkResponseState<List<HeroEntity>>> =
+        repository.getAllHeroes(heroName, heroAttribute)
 }

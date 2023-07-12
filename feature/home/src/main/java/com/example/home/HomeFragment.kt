@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel by viewModels<HomeViewModel>()
 
-    private val anotherViewModel by viewModels<FilterDialogViewModel>()
+    private val dialogViewModel by viewModels<FilterDialogViewModel>()
 
     private val adapter :HeroRecyclerViewAdapter by lazy {
         HeroRecyclerViewAdapter()
@@ -38,7 +38,9 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentHomeBinding.inflate(layoutInflater).apply {
+        binding = FragmentHomeBinding.inflate(LayoutInflater.from(
+            requireContext()
+        )).apply {
             heroListRecyclerView.adapter = adapter
         }
         return binding.root
@@ -58,6 +60,7 @@ class HomeFragment : Fragment() {
             .debounce(MILLISECONDS)
             .distinctUntilChanged()
             .onEach {
+                viewModel.heroName = it
                 viewModel.getAllHero()
             }.launchIn(lifecycleScope)
     }
@@ -65,20 +68,6 @@ class HomeFragment : Fragment() {
 
     private fun observeUiState(){
         viewModel.getAllHero()
-       /* viewModel.heroHomeUiState.observe(viewLifecycleOwner){
-            when(it){
-                is HomeUiState.Success->{
-                    handleSuccessUiState(it.data)
-                }
-                is HomeUiState.Loading->{
-
-                }
-                is HomeUiState.Error->{
-
-                }
-            }
-        }*/
-
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.heroHomeUiState.collect{
@@ -104,17 +93,20 @@ class HomeFragment : Fragment() {
     }
     private fun initView(){
         binding.optionsIcon.setOnClickListener {
-            FilterDialogFragment().show(
+            val filterDialogFragment = FilterDialogFragment()
+            val args = Bundle()
+            args.putString("attribute",viewModel.heroAttribute)
+            filterDialogFragment.arguments = args
+            filterDialogFragment.show(
                 childFragmentManager, FilterDialogFragment.TAG
             )
         }
     }
 
     private fun observeState() {
-        anotherViewModel.getHeroAttribute()
-        anotherViewModel.heroAttribute.observe(viewLifecycleOwner){
-            println(it.toString())
-            println("burdayım")
+        dialogViewModel.getHeroAttribute()
+        dialogViewModel.heroAttribute.observe(viewLifecycleOwner){
+            viewModel.heroAttribute = it.toString()
         }
     }
 

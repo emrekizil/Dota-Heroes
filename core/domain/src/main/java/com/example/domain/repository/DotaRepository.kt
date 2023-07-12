@@ -5,7 +5,7 @@ import com.example.domain.entity.HeroEntity
 import kotlinx.coroutines.flow.Flow
 
 interface DotaRepository {
-    fun getAllHeroes() : Flow<NetworkResponseState<List<HeroEntity>>>
+    fun getAllHeroes(heroName:String , heroAttribute:String?) : Flow<NetworkResponseState<List<HeroEntity>>>
 
     suspend fun saveAttributePreference(attributePreference:String)
 

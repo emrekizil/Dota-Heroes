@@ -31,19 +31,21 @@ class HomeViewModel @Inject constructor(
 
     val heroHomeUiState = _heroHomeUiState.asStateFlow()
 
+    var heroName:String = ""
+
+    var heroAttribute:String? = null
+
 
     fun getAllHero(){
         viewModelScope.launch(ioDispatcher) {
-            getAllHeroesUseCase().collectLatest {value->
+            getAllHeroesUseCase(heroName,heroAttribute).collectLatest {value->
                 when(value){
                     is NetworkResponseState.Loading ->{
-                        //_heroHomeUiState.postValue(HomeUiState.Loading)
                         _heroHomeUiState.update {
                             HomeUiState.Loading
                         }
                     }
                     is NetworkResponseState.Success->{
-                       // _heroHomeUiState.postValue(HomeUiState.Success(heroListMapper.map(it.result)))
                         _heroHomeUiState.update {
                             HomeUiState.Success(heroListMapper.map(
                                 value.result
@@ -51,7 +53,6 @@ class HomeViewModel @Inject constructor(
                         }
                     }
                     is NetworkResponseState.Error ->{
-                       // _heroHomeUiState.postValue(HomeUiState.Error(coreUiRes.string.error))
                         _heroHomeUiState.update {
                             HomeUiState.Error(
                                 coreUiRes.string.error

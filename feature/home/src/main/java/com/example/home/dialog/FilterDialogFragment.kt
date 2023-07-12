@@ -38,7 +38,7 @@ class FilterDialogFragment : DialogFragment() {
                 )
                 val x: CheckBox? = returnCheckedBox(listOfCheckBox)
                 viewModel.setHeroAttribute(x?.text.toString())
-                //dismiss()
+                dismiss()
             }
             binding.agilityCheckbox.reStateAllCheckbox(
                 binding.intelligenceCheckbox,

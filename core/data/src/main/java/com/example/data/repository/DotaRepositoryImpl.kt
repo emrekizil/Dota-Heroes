@@ -19,14 +19,19 @@ class DotaRepositoryImpl @Inject constructor(
     private val heroListMapperImpl: HeroListMapperImpl,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : DotaRepository {
-    override fun getAllHeroes(): Flow<NetworkResponseState<List<HeroEntity>>> =
+    override fun getAllHeroes(heroName:String, heroAttribute:String?): Flow<NetworkResponseState<List<HeroEntity>>> =
         flow {
             emit(NetworkResponseState.Loading)
             when(val response = remoteDataSource.getAllHeroes()){
                 is NetworkResponseState.Loading-> Unit
                 is NetworkResponseState.Error -> emit(response)
                 is NetworkResponseState.Success -> emit(
-                   NetworkResponseState.Success(heroListMapperImpl.map(response.result))
+                   NetworkResponseState.Success(heroListMapperImpl.map(response.result?.filter {
+                       heroAttribute?.let { value->
+                           it.primaryAttr == value
+                       } == true && it.localizedName.lowercase().contains(heroName)
+                   }
+                   ))
                 )
             }
         }.flowOn(ioDispatcher)
