@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.CheckBox
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import com.example.home.HEROATTRIBUTE
 import com.example.home.databinding.FragmentFilterDialogBinding
 import com.example.ui.extension.reStateAllCheckbox
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,6 +61,8 @@ class FilterDialogFragment : DialogFragment() {
                 binding.strengthCheckbox,
                 binding.noneCheckbox
             )
+            val heroArgument = arguments?.getString("attribute")
+            checkAttribute(heroArgument)
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
 
@@ -68,13 +71,22 @@ class FilterDialogFragment : DialogFragment() {
     fun observeUiState(){
         viewModel.getHeroAttribute()
         viewModel.heroAttribute.observe(this){
-            println("güncellendi $it")
+          //  println("güncellendi $it")
         }
     }
 
 
     private fun returnCheckedBox(listOfCheckBox: List<CheckBox>): CheckBox? {
         return listOfCheckBox.find { it.isChecked }
+    }
+
+    private fun checkAttribute(heroAttribute:String?){
+        when(heroAttribute){
+            HEROATTRIBUTE.STRENGTH.heroAttribute -> binding.strengthCheckbox.isChecked = true
+            HEROATTRIBUTE.INTELLIGENCE.heroAttribute -> binding.intelligenceCheckbox.isChecked = true
+            HEROATTRIBUTE.NONE.heroAttribute -> binding.noneCheckbox.isChecked = true
+            HEROATTRIBUTE.AGILITY.heroAttribute -> binding.agilityCheckbox.isChecked = true
+        }
     }
 
 }

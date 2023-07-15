@@ -107,12 +107,13 @@ class HomeFragment : Fragment() {
         dialogViewModel.getHeroAttribute()
         dialogViewModel.heroAttribute.observe(viewLifecycleOwner){
             viewModel.heroAttribute = it.toString()
+            viewModel.getAllHero()
         }
     }
 
     companion object{
         private const val MILLISECONDS = 200L
-        private const val MINIMUM_SEARCH_LENGTH = 1
+        private const val MINIMUM_SEARCH_LENGTH = -1
     }
 
 }

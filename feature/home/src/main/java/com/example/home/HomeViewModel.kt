@@ -38,7 +38,7 @@ class HomeViewModel @Inject constructor(
 
     fun getAllHero(){
         viewModelScope.launch(ioDispatcher) {
-            getAllHeroesUseCase(heroName,heroAttribute).collectLatest {value->
+            getAllHeroesUseCase(heroName,getHeroAttributeAbbreviation(heroAttribute)).collectLatest {value->
                 when(value){
                     is NetworkResponseState.Loading ->{
                         _heroHomeUiState.update {
@@ -63,5 +63,22 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+
+    fun getHeroAttributeAbbreviation(heroAttribute:String?) : String  =
+        when(heroAttribute){
+            HEROATTRIBUTE.NONE.heroAttribute ->  "all"
+            HEROATTRIBUTE.AGILITY.heroAttribute -> "agi"
+            HEROATTRIBUTE.INTELLIGENCE.heroAttribute-> "int"
+            HEROATTRIBUTE.STRENGTH.heroAttribute -> "str"
+            else -> ""
+        }
+
+
+}
+enum class HEROATTRIBUTE(val heroAttribute: String){
+    STRENGTH("Strength"),
+    AGILITY("Agility"),
+    INTELLIGENCE("Intelligence"),
+    NONE("None")
 
 }
