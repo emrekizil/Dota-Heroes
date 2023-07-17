@@ -21,8 +21,12 @@ class HeroListMapperImpl @Inject constructor() : HeroListMapper<DotaResponseItem
                 baseHealth = it.baseHealth,
                 baseMana = it.baseMana,
                 attackType = it.attackType,
-                attackRange = it.attackRange
+                attackRange = it.attackRange,
+                proWinRate = calculatePercentage(it.proWin,it.proPick),
+                turboWinRate = calculatePercentage(it.turboWins,it.turboPicks)
             )
         } ?: emptyList()
     }
 }
+
+fun calculatePercentage(winNumber:Int,pickNumber:Int) : Int =  (winNumber/pickNumber) * 100

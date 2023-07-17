@@ -14,4 +14,6 @@ data class HeroEntity(
     val baseArmor: Double,
     val attackType: String,
     val attackRange: Int,
+    val proWinRate:Int,
+    val turboWinRate:Int
 )

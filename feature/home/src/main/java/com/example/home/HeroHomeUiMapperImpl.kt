@@ -11,7 +11,8 @@ class HeroHomeUiMapperImpl @Inject constructor() : HeroListMapper<HeroEntity,Hom
             HomeUiData(
                 id = it.id,
                 localizedName = it.localizedName,
-                img = it.img
+                img = it.img,
+                proWinRate = it.proWinRate
             )
         } ?: emptyList()
     }

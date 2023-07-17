@@ -72,13 +72,10 @@ class HomeViewModel @Inject constructor(
             HEROATTRIBUTE.STRENGTH.heroAttribute -> "str"
             else -> ""
         }
-
-
 }
 enum class HEROATTRIBUTE(val heroAttribute: String){
     STRENGTH("Strength"),
     AGILITY("Agility"),
     INTELLIGENCE("Intelligence"),
     NONE("None")
-
 }
