@@ -8,8 +8,9 @@ import android.view.View
 import android.widget.CheckBox
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.home.HEROATTRIBUTE
+
 import com.example.home.databinding.FragmentFilterDialogBinding
+import com.example.ui.extension.HEROATTRIBUTE
 import com.example.ui.extension.reStateAllCheckbox
 import dagger.hilt.android.AndroidEntryPoint
 

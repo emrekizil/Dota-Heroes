@@ -10,6 +10,8 @@ import com.example.common.mapper.HeroListMapper
 import com.example.domain.entity.HeroEntity
 import com.example.domain.usecase.getallheroes.GetAllHeroesUseCase
 import com.example.ui.HomeUiData
+import com.example.ui.extension.HEROATTRIBUTE
+import com.example.ui.extension.getHeroAttributeAbbreviation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -64,18 +66,5 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getHeroAttributeAbbreviation(heroAttribute:String?) : String  =
-        when(heroAttribute){
-            HEROATTRIBUTE.NONE.heroAttribute ->  "all"
-            HEROATTRIBUTE.AGILITY.heroAttribute -> "agi"
-            HEROATTRIBUTE.INTELLIGENCE.heroAttribute-> "int"
-            HEROATTRIBUTE.STRENGTH.heroAttribute -> "str"
-            else -> ""
-        }
-}
-enum class HEROATTRIBUTE(val heroAttribute: String){
-    STRENGTH("Strength"),
-    AGILITY("Agility"),
-    INTELLIGENCE("Intelligence"),
-    NONE("None")
+
 }

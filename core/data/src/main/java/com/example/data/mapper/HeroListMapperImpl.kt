@@ -29,4 +29,4 @@ class HeroListMapperImpl @Inject constructor() : HeroListMapper<DotaResponseItem
     }
 }
 
-fun calculatePercentage(winNumber:Int,pickNumber:Int) : Int =  (winNumber/pickNumber) * 100
+fun calculatePercentage(winNumber:Int,pickNumber:Int) : Int =  (winNumber * 100) / pickNumber

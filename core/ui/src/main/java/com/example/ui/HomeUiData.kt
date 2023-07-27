@@ -4,5 +4,6 @@ data class HomeUiData(
     val id: Int,
     val img: String,
     val localizedName: String,
-    val proWinRate:Int
+    val proWinRate:Int,
+    val primaryAttr:String
 )
