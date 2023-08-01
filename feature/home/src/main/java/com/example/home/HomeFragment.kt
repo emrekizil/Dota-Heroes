@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.dialog.FilterDialogFragment
 import com.example.home.dialog.FilterDialogViewModel
@@ -30,7 +31,9 @@ class HomeFragment : Fragment() {
     private val dialogViewModel by viewModels<FilterDialogViewModel>()
 
     private val adapter :HeroRecyclerViewAdapter by lazy {
-        HeroRecyclerViewAdapter()
+        HeroRecyclerViewAdapter{data ->
+            adapterOnClick(data)
+        }
     }
 
 
@@ -109,6 +112,10 @@ class HomeFragment : Fragment() {
             viewModel.heroAttribute = it.toString()
             viewModel.getAllHero()
         }
+    }
+    private fun adapterOnClick(data:HomeUiData){
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment()
+        findNavController().navigate(action)
     }
 
     companion object{
