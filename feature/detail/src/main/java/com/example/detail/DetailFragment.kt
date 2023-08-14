@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
 import com.example.detail.databinding.FragmentDetailBinding
+import com.example.ui.HeroUiData
+import com.example.ui.extension.loadImage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +32,17 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textview.text = args.heroUiData.localizedName
+        setupView(args.heroUiData)
+
+    }
+
+    private fun setupView(heroUiData: HeroUiData) {
+        binding.apply {
+            heroTitleTextView.text = heroUiData.localizedName
+            heroAttributeTextView.text = heroUiData.primaryAttr
+            heroAttackTypeTextView.text = heroUiData.primaryAttr
+            heroImageView.loadImage("https://api.opendota.com"+ heroUiData.img)
+        }
     }
 
 

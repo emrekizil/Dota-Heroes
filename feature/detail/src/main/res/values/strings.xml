@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="base_stats">Base Stats</string>
+    <string name="attack_damage">Attack Damage:</string>
+    <string name="move_speed">Move Speed:</string>
+    <string name="projectile_speed">Projectile Speed:</string>
+    <string name="attack_range">Attack Range:</string>
+    <string name="health">Health:</string>
+    <string name="intelligence">Intelligence:</string>
+    <string name="agility">Agility:</string>
+    <string name="strength">Strength:</string>
+    <string name="pro_wins">Pro Wins</string>
+    <string name="turbo_wins">Turbo Wins</string>
+</resources>

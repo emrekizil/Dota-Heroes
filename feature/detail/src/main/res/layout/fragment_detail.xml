@@ -1,14 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailFragment">
 
-    <TextView
-        android:id="@+id/textview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/hero_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/hero_title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hero_image_view"
+        tools:text="Templar Assassin" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/hero_icon_image_view"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/hero_title_text_view" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/hero_attribute_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@id/hero_title_text_view"
+        app:layout_constraintTop_toBottomOf="@id/hero_title_text_view"
+        tools:text="Agility" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/hero_attack_type_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@id/hero_title_text_view"
+        app:layout_constraintTop_toBottomOf="@id/hero_attribute_text_view"
+        tools:text="Ranged" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/hero_base_stats_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hero_attack_type_text_view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_base_stats_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/base_stats"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_strength_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/strength"
+                app:layout_constraintStart_toStartOf="@id/hero_base_stats_text_view"
+                app:layout_constraintTop_toBottomOf="@id/hero_base_stats_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_agility_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/agility"
+                app:layout_constraintStart_toStartOf="@id/hero_base_stats_text_view"
+                app:layout_constraintTop_toBottomOf="@id/hero_strength_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_intelligence_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/intelligence"
+                app:layout_constraintStart_toStartOf="@id/hero_base_stats_text_view"
+                app:layout_constraintTop_toBottomOf="@id/hero_agility_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_health_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/health"
+                app:layout_constraintStart_toStartOf="@id/hero_base_stats_text_view"
+                app:layout_constraintTop_toBottomOf="@id/hero_intelligence_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_attack_range_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:text="@string/attack_range"
+                app:layout_constraintStart_toStartOf="@id/hero_base_stats_text_view"
+                app:layout_constraintTop_toTopOf="@id/hero_strength_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_projectile_speed_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/projectile_speed"
+                app:layout_constraintStart_toStartOf="@id/hero_attack_range_text_view"
+                app:layout_constraintTop_toTopOf="@id/hero_agility_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_move_speed_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/move_speed"
+                app:layout_constraintStart_toStartOf="@id/hero_attack_range_text_view"
+                app:layout_constraintTop_toTopOf="@id/hero_intelligence_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_attack_damage_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/attack_damage"
+                app:layout_constraintStart_toStartOf="@id/hero_attack_range_text_view"
+                app:layout_constraintTop_toTopOf="@id/hero_health_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_strength_value_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toStartOf="@id/hero_attack_range_text_view"
+                app:layout_constraintTop_toTopOf="@id/hero_strength_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_agility_value_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toStartOf="@id/hero_projectile_speed_text_view"
+                app:layout_constraintTop_toTopOf="@id/hero_agility_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_intelligence_value_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toStartOf="@id/hero_move_speed_text_view"
+                app:layout_constraintTop_toTopOf="@id/hero_intelligence_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_health_value_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toStartOf="@id/hero_attack_damage_text_view"
+                app:layout_constraintTop_toTopOf="@id/hero_health_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_attack_range_value_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/hero_attack_range_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_projectile_speed_value_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/hero_attack_range_value_text_view"
+                app:layout_constraintTop_toTopOf="@id/hero_projectile_speed_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_move_speed_value_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/hero_attack_range_value_text_view"
+                app:layout_constraintTop_toTopOf="@id/hero_move_speed_text_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hero_attack_damage_value_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/hero_attack_range_value_text_view"
+                app:layout_constraintTop_toTopOf="@id/hero_attack_damage_text_view" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/hero_pro_wins_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:text="@string/pro_wins"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/hero_base_stats_card_view"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/hero_turbo_wins_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:text="@string/turbo_wins"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/hero_pro_wins_text_view"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/hero_pro_wins_value_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="@id/hero_pro_wins_text_view"
+        app:layout_constraintEnd_toEndOf="@id/hero_pro_wins_text_view"
+        app:layout_constraintTop_toBottomOf="@id/hero_pro_wins_text_view"
+        tools:text="56 %"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/hero_turbo_wins_value_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="@id/hero_turbo_wins_text_view"
+        app:layout_constraintEnd_toEndOf="@id/hero_turbo_wins_text_view"
+        app:layout_constraintTop_toBottomOf="@id/hero_turbo_wins_text_view"
+        tools:text="56 %"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="205dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
