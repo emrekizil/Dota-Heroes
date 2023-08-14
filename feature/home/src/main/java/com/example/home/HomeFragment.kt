@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.dialog.FilterDialogFragment
 import com.example.home.dialog.FilterDialogViewModel
-import com.example.ui.HomeUiData
+import com.example.ui.HeroUiData
 import com.example.ui.extension.observeTextChanges
 import com.example.ui.extension.okWith
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +35,6 @@ class HomeFragment : Fragment() {
             adapterOnClick(data)
         }
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -91,7 +90,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun handleSuccessUiState(data: List<HomeUiData>) {
+    private fun handleSuccessUiState(data: List<HeroUiData>) {
         adapter.updateItems(data)
     }
     private fun initView(){
@@ -113,8 +112,8 @@ class HomeFragment : Fragment() {
             viewModel.getAllHero()
         }
     }
-    private fun adapterOnClick(data:HomeUiData){
-        val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment()
+    private fun adapterOnClick(data:HeroUiData){
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(data)
         findNavController().navigate(action)
     }
 

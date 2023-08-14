@@ -2,10 +2,9 @@ package com.example.ui.component
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import com.example.ui.HomeUiData
+import com.example.ui.HeroUiData
 import com.example.ui.databinding.LayoutHeroBinding
 import com.example.ui.extension.getHeroAttributeAllName
 import com.example.ui.extension.getHeroPercentageAndColor
@@ -22,10 +21,10 @@ class HomeUiComponent @JvmOverloads constructor(
         addView(binding.root)
     }
 
-    fun setHeroData(homeUiData: HomeUiData){
-        binding.heroImage.loadImage("https://api.opendota.com"+homeUiData.img)
-        binding.heroName.text = homeUiData.localizedName
-        binding.heroWinrate.getHeroPercentageAndColor(homeUiData.proWinRate)
-        binding.heroAttribute.text = getHeroAttributeAllName(homeUiData.primaryAttr)
+    fun setHeroData(heroUiData: HeroUiData){
+        binding.heroImage.loadImage("https://api.opendota.com"+heroUiData.img)
+        binding.heroName.text = heroUiData.localizedName
+        binding.heroWinrate.getHeroPercentageAndColor(heroUiData.proWinRate)
+        binding.heroAttribute.text = getHeroAttributeAllName(heroUiData.primaryAttr)
     }
 }

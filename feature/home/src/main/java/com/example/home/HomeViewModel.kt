@@ -1,7 +1,5 @@
 package com.example.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.common.NetworkResponseState
@@ -9,8 +7,7 @@ import com.example.common.di.IoDispatcher
 import com.example.common.mapper.HeroListMapper
 import com.example.domain.entity.HeroEntity
 import com.example.domain.usecase.getallheroes.GetAllHeroesUseCase
-import com.example.ui.HomeUiData
-import com.example.ui.extension.HEROATTRIBUTE
+import com.example.ui.HeroUiData
 import com.example.ui.extension.getHeroAttributeAbbreviation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -25,7 +22,7 @@ import com.example.ui.R as coreUiRes
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val getAllHeroesUseCase: GetAllHeroesUseCase,
-    private val heroListMapper: HeroListMapper<HeroEntity,HomeUiData>,
+    private val heroListMapper: HeroListMapper<HeroEntity,HeroUiData>,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 

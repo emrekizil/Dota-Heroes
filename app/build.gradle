@@ -45,6 +45,7 @@ dependencies {
     implementation project(path:':core:common')
     implementation project(path:':core:domain')
     implementation project(path:':feature:home')
+    implementation project(path: ':feature:detail')
     implementation project(path:':navigation')
 
     implementation 'androidx.core:core-ktx:1.7.0'

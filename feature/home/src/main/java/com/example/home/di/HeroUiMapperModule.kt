@@ -3,7 +3,7 @@ package com.example.home.di
 import com.example.common.mapper.HeroListMapper
 import com.example.domain.entity.HeroEntity
 import com.example.home.HeroHomeUiMapperImpl
-import com.example.ui.HomeUiData
+import com.example.ui.HeroUiData
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,5 +16,5 @@ abstract class HeroUiMapperModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun provideHeroHomeUiMapper(heroHomeUiMapperImpl: HeroHomeUiMapperImpl):HeroListMapper<HeroEntity,HomeUiData>
+    abstract fun provideHeroHomeUiMapper(heroHomeUiMapperImpl: HeroHomeUiMapperImpl):HeroListMapper<HeroEntity,HeroUiData>
 }
