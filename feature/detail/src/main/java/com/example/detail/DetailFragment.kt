@@ -9,6 +9,8 @@ import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
 import com.example.detail.databinding.FragmentDetailBinding
 import com.example.ui.HeroUiData
+import com.example.ui.extension.getHeroAttributeAllName
+import com.example.ui.extension.getHeroPercentageAndColor
 import com.example.ui.extension.loadImage
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,11 +41,11 @@ class DetailFragment : Fragment() {
     private fun setupView(heroUiData: HeroUiData) {
         binding.apply {
             heroTitleTextView.text = heroUiData.localizedName
-            heroAttributeTextView.text = heroUiData.primaryAttr
-            heroAttackTypeTextView.text = heroUiData.primaryAttr
+            heroAttributeTextView.text = getHeroAttributeAllName(heroUiData.primaryAttr)
             heroImageView.loadImage("https://api.opendota.com"+ heroUiData.img)
+            heroProWinsValueTextView.getHeroPercentageAndColor(heroUiData.proWinRate)
+            heroTurboWinsValueTextView.getHeroPercentageAndColor(heroUiData.proWinRate)
+
         }
     }
-
-
 }
