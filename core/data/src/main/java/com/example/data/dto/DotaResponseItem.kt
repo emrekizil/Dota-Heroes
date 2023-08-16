@@ -37,13 +37,13 @@ data class DotaResponseItem(
     @SerializedName("base_str")
     val baseStr: Int,
     @SerializedName("base_int")
-    val baseİnt: Int,
+    val baseInt: Int,
     @SerializedName("cm_enabled")
     val cmEnabled: Boolean,
     @SerializedName("day_vision")
     val dayVision: Int,
     @SerializedName("hero_id")
-    val heroİd: Int,
+    val heroId: Int,
     @SerializedName("icon")
     val icon: String,
     @SerializedName("id")

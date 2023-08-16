@@ -15,5 +15,15 @@ data class HeroEntity(
     val attackType: String,
     val attackRange: Int,
     val proWinRate:Int,
-    val turboWinRate:Int
+    val turboWinRate:Int,
+    val projectileSpeed:Int,
+    val health:Int,
+    val baseStr:Int,
+    val strGain:Double,
+    val baseAgi:Int,
+    val agiGain:Double,
+    val baseInt:Int,
+    val intGain:Double,
+    val baseAttackMin:Int,
+    val baseAttackMax:Int
 )

@@ -23,7 +23,17 @@ class HeroListMapperImpl @Inject constructor() : HeroListMapper<DotaResponseItem
                 attackType = it.attackType,
                 attackRange = it.attackRange,
                 proWinRate = calculatePercentage(it.proWin,it.proPick),
-                turboWinRate = calculatePercentage(it.turboWins,it.turboPicks)
+                turboWinRate = calculatePercentage(it.turboWins,it.turboPicks),
+                projectileSpeed = it.projectileSpeed,
+                health = it.baseHealth,
+                baseStr = it.baseStr,
+                strGain = it.strGain,
+                baseAgi = it.baseAgi,
+                agiGain = it.agiGain,
+                baseInt = it.baseInt,
+                intGain = it.intGain,
+                baseAttackMax = it.baseAttackMax,
+                baseAttackMin = it.baseAttackMin
             )
         } ?: emptyList()
     }

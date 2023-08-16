@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="error">Error</string>
+    <string name="base_hero_stat_addition">%1$s + %2$s</string>
+    <string name="base_hero_stat_interval">%1$s - %2$s</string>
 </resources>
