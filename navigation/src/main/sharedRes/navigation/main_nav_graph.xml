@@ -24,5 +24,13 @@
             android:name="heroUiData"
             app:argType="com.example.ui.HeroUiData" />
     </fragment>
+    <fragment
+        android:id="@+id/savedHeroFragment"
+        android:name="com.example.home.saved.SavedHeroFragment"
+        android:label="SavedHeroFragment" >
+        <action
+            android:id="@+id/action_savedHeroFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
 </navigation>

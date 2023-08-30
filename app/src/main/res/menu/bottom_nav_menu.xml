@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_search"
+          android:title="@string/home_fragment_title"/>
+    <item android:id="@+id/savedHeroFragment"
+        android:icon="@drawable/ic_bookmark"
+        android:title="@string/saved_fragment_title"/>
+
+</menu>

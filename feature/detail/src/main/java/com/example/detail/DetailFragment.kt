@@ -34,7 +34,6 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView(args.heroUiData)
-
     }
 
     private fun setupView(heroUiData: HeroUiData) {
