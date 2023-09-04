@@ -67,7 +67,6 @@ class HomeFragment : Fragment() {
             }.launchIn(lifecycleScope)
     }
 
-
     private fun observeUiState(){
         viewModel.getAllHero()
         lifecycleScope.launch {
@@ -87,7 +86,6 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
     }
 
     private fun handleSuccessUiState(data: List<HeroUiData>) {

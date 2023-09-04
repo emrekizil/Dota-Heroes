@@ -21,4 +21,5 @@ ext {
     lifecycle_version = "2.6.1"
     nav_version = "2.6.0"
     datastore_version="1.0.0"
+    room_version = "2.5.2"
 }
