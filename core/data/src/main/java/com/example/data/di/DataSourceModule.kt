@@ -1,5 +1,7 @@
 package com.example.data.di
 
+import com.example.data.source.local.LocalDataSource
+import com.example.data.source.local.LocalDataSourceImpl
 import com.example.data.source.local.datastore.FilterPreferenceSource
 import com.example.data.source.local.datastore.FilterPreferenceSourceImpl
 import com.example.data.source.remote.RemoteDataSource
@@ -21,4 +23,8 @@ abstract class DataSourceModule {
     @Binds
     @ViewModelScoped
     abstract fun bindLocalDataStoreSource(filterPreferenceSourceImpl: FilterPreferenceSourceImpl):FilterPreferenceSource
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindLocalDataSource(localDataSourceImpl: LocalDataSourceImpl): LocalDataSource
 }

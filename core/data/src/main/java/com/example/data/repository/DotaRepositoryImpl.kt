@@ -3,6 +3,7 @@ package com.example.data.repository
 import com.example.common.NetworkResponseState
 import com.example.common.di.IoDispatcher
 import com.example.data.mapper.HeroListMapperImpl
+import com.example.data.source.local.LocalDataSource
 import com.example.data.source.local.datastore.FilterPreferenceSource
 import com.example.data.source.remote.RemoteDataSource
 import com.example.domain.entity.HeroEntity
@@ -17,6 +18,7 @@ class DotaRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val filterPreferenceSource: FilterPreferenceSource,
     private val heroListMapperImpl: HeroListMapperImpl,
+    private val localDataSource: LocalDataSource,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : DotaRepository {
     override fun getAllHeroes(heroName:String, heroAttribute:String?): Flow<NetworkResponseState<List<HeroEntity>>> =
