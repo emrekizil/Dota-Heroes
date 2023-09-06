@@ -17,4 +17,6 @@ abstract class HeroUiMapperModule {
     @Binds
     @ViewModelScoped
     abstract fun provideHeroHomeUiMapper(heroHomeUiMapperImpl: HeroHomeUiMapperImpl):HeroListMapper<HeroEntity,HeroUiData>
+
+
 }

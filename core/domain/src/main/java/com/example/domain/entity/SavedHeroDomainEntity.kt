@@ -1,6 +1,6 @@
 package com.example.domain.entity
 
-data class SavedHeroDbEntity(
+data class SavedHeroDomainEntity(
     val id: Int,
     val img: String,
     val localizedName: String,
@@ -22,3 +22,4 @@ data class SavedHeroDbEntity(
     val baseAttackMin:Int,
     val baseAttackMax:Int
 )
+
