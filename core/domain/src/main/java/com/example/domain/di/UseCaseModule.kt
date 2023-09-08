@@ -1,9 +1,15 @@
 package com.example.domain.di
 
+import com.example.domain.usecase.deletesavedhero.DeleteSavedHeroUseCase
+import com.example.domain.usecase.deletesavedhero.DeleteSavedHeroUseCaseImpl
 import com.example.domain.usecase.getallheroes.GetAllHeroesUseCase
 import com.example.domain.usecase.getallheroes.GetAllHeroesUseCaseImpl
 import com.example.domain.usecase.getheroattribute.GetHeroAttributeUseCase
 import com.example.domain.usecase.getheroattribute.GetHeroAttributeUseCaseImpl
+import com.example.domain.usecase.getsavedheroes.GetSavedHeroesUseCase
+import com.example.domain.usecase.getsavedheroes.GetSavedHeroesUseCaseImpl
+import com.example.domain.usecase.savehero.SaveHeroUseCase
+import com.example.domain.usecase.savehero.SaveHeroUseCaseImpl
 import com.example.domain.usecase.setheroattribute.SetHeroAttributeUseCase
 import com.example.domain.usecase.setheroattribute.SetHeroAttributeUseCaseImpl
 import dagger.Binds
@@ -27,4 +33,16 @@ abstract class UseCaseModule {
     @Binds
     @ViewModelScoped
     abstract fun bindSetHeroAttributeUseCase(setHeroAttributeUseCaseImpl: SetHeroAttributeUseCaseImpl):SetHeroAttributeUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindGetSavedHeroesUseCase(getSavedHeroesUseCaseImpl: GetSavedHeroesUseCaseImpl) : GetSavedHeroesUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindDeleteSavedHeroUseCase(deleteSavedHeroUseCaseImpl: DeleteSavedHeroUseCaseImpl) : DeleteSavedHeroUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindSaveHeroUseCase(saveHeroUseCaseImpl: SaveHeroUseCaseImpl) : SaveHeroUseCase
 }

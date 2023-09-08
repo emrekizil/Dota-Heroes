@@ -6,27 +6,36 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.home.R
+import com.example.home.databinding.FragmentHomeBinding
+import com.example.home.databinding.FragmentSavedHeroBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SavedHeroFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = SavedHeroFragment()
-    }
+    private val viewModel by viewModels<SavedHeroViewModel>()
 
-    private lateinit var viewModel: SavedHeroViewModel
+    private lateinit var binding:FragmentSavedHeroBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        return inflater.inflate(R.layout.fragment_saved_hero, container, false)
+        binding = FragmentSavedHeroBinding.inflate(LayoutInflater.from(
+            requireContext()
+        ))
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SavedHeroViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+
     }
+
+
 
 }
