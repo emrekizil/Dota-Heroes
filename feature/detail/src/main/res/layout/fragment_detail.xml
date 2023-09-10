@@ -57,6 +57,17 @@
         app:layout_constraintTop_toBottomOf="@id/hero_attribute_text_view"
         tools:text="Ranged" />
 
+    <ImageButton
+        android:id="@+id/bookmark_button_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_bookmark"
+        android:layout_marginRight="8dp"
+        android:backgroundTint="@color/background_color"
+        app:layout_constraintBottom_toBottomOf="@+id/hero_icon_image_view"
+        app:layout_constraintEnd_toStartOf="@+id/hero_icon_image_view"
+        app:layout_constraintTop_toTopOf="@+id/hero_icon_image_view" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/hero_base_stats_card_view"
         android:layout_width="match_parent"

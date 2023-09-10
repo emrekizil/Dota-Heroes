@@ -32,16 +32,7 @@ class SavedHeroViewModel @Inject constructor(
     val heroHomeUiState = _heroHomeUiState.asStateFlow()
 
 
-    fun deleteSavedHeroes(heroUiData: HeroUiData){
-        viewModelScope.launch(ioDispatcher) {
-            deleteSavedHeroUseCase(heroUiData.toDomainEntity())
-        }
-    }
-    fun saveHero(heroUiData: HeroUiData){
-        viewModelScope.launch(ioDispatcher) {
-            saveHeroUseCase(heroUiData.toDomainEntity())
-        }
-    }
+
 
     fun getSavedHeroes(){
         viewModelScope.launch(ioDispatcher) {

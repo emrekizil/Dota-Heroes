@@ -10,6 +10,7 @@ import coil.load
 import coil.size.Scale
 import com.example.ui.R
 import com.example.ui.contract.AbstractTextWatcher
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow

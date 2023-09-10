@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.detail.databinding.FragmentDetailBinding
 import com.example.ui.HeroUiData
@@ -16,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
 
-    private lateinit var viewModel: DetailViewModel
+    private val viewModel by viewModels<DetailViewModel>()
 
     private val args: DetailFragmentArgs by navArgs()
 
@@ -53,6 +54,9 @@ class DetailFragment : Fragment() {
             heroIntelligenceValueTextView.text = getString(com.example.ui.R.string.base_hero_stat_addition,heroUiData.baseInt.toString(),heroUiData.intGain.toString())
             heroAttackDamageValueTextView.text = getString(com.example.ui.R.string.base_hero_stat_addition,heroUiData.baseAttackMin.toString(),heroUiData.baseAttackMax.toString())
             heroIconImageView.loadImage("https://api.opendota.com"+ heroUiData.icon)
+            bookmarkButtonView.setOnClickListener {
+                viewModel.saveHero(heroUiData)
+            }
         }
     }
 }
