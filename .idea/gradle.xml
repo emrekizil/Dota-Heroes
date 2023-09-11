@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/detail" />
             <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/feature/saved" />
             <option value="$PROJECT_DIR$/navigation" />
           </set>
         </option>

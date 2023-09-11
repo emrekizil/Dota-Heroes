@@ -22,7 +22,6 @@ import javax.inject.Inject
 class SavedHeroViewModel @Inject constructor(
     private val getSavedHeroesUseCase: GetSavedHeroesUseCase,
     private val deleteSavedHeroUseCase: DeleteSavedHeroUseCase,
-    private val saveHeroUseCase: SaveHeroUseCase,
     private val heroUiToDomainMapperImpl: HeroUiToDomainMapperImpl,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
@@ -30,8 +29,6 @@ class SavedHeroViewModel @Inject constructor(
     private val _heroHomeUiState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
 
     val heroHomeUiState = _heroHomeUiState.asStateFlow()
-
-
 
 
     fun getSavedHeroes(){
