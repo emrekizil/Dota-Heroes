@@ -1,16 +1,12 @@
-package com.example.home.saved
+package com.example.saved
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.common.di.IoDispatcher
 import com.example.domain.usecase.deletesavedhero.DeleteSavedHeroUseCase
 import com.example.domain.usecase.getsavedheroes.GetSavedHeroesUseCase
-import com.example.domain.usecase.savehero.SaveHeroUseCase
-import com.example.home.HomeUiState
-import com.example.ui.HeroUiData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -26,16 +22,16 @@ class SavedHeroViewModel @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    private val _heroHomeUiState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
+    private val _savedHeroUiState = MutableStateFlow<SavedHeroUiState>(SavedHeroUiState.Loading)
 
-    val heroHomeUiState = _heroHomeUiState.asStateFlow()
+    val savedHeroUiState = _savedHeroUiState.asStateFlow()
 
 
     fun getSavedHeroes(){
         viewModelScope.launch(ioDispatcher) {
             getSavedHeroesUseCase().collectLatest { value ->
-                _heroHomeUiState.update {
-                    HomeUiState.Success(
+                _savedHeroUiState.update {
+                    SavedHeroUiState.Success(
                         heroUiToDomainMapperImpl.map(value)
                     )
                 }

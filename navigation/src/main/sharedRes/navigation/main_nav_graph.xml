@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/savedHeroFragment"
-        android:name="com.example.home.saved.SavedHeroFragment"
+        android:name="com.example.saved.SavedHeroFragment"
         android:label="SavedHeroFragment" >
         <action
             android:id="@+id/action_savedHeroFragment_to_detailFragment"

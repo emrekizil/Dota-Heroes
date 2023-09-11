@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background_color"
-    tools:context=".saved.SavedHeroFragment">
+    tools:context="com.example.saved.SavedHeroFragment">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -53,17 +53,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageButton
-                android:id="@+id/options_icon"
-                style="@android:style/Widget.Material.ImageButton"
-                android:layout_width="24dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:backgroundTint="@color/bar_color"
-                android:contentDescription="@string/option"
-                android:src="@drawable/options_icon"
-                tools:src="@drawable/options_icon" />
+
 
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>

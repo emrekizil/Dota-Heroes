@@ -1,4 +1,4 @@
-package com.example.home.saved
+package com.example.saved
 
 import com.example.common.mapper.HeroListMapper
 import com.example.domain.entity.SavedHeroDomainEntity

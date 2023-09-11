@@ -1,24 +1,18 @@
-package com.example.home.saved
+package com.example.saved
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.example.home.HeroRecyclerViewAdapter
-import com.example.home.HomeUiState
-import com.example.home.R
-import com.example.home.databinding.FragmentHomeBinding
-import com.example.home.databinding.FragmentSavedHeroBinding
+import com.example.saved.databinding.FragmentSavedHeroBinding
 import com.example.ui.HeroUiData
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -26,8 +20,8 @@ class SavedHeroFragment : Fragment() {
 
     private val viewModel by viewModels<SavedHeroViewModel>()
 
-    private val adapter : HeroRecyclerViewAdapter by lazy {
-        HeroRecyclerViewAdapter { data ->
+    private val adapter : SavedHeroRecyclerViewAdapter by lazy {
+        SavedHeroRecyclerViewAdapter { data ->
             onClickItem(data)
         }
     }
@@ -57,15 +51,15 @@ class SavedHeroFragment : Fragment() {
         viewModel.getSavedHeroes()
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
-                viewModel.heroHomeUiState.collect{
+                viewModel.savedHeroUiState.collect{
                     when(it){
-                        is HomeUiState.Success -> {
+                        is SavedHeroUiState.Success -> {
                             handleSuccessUiData(it.data)
                         }
-                        is HomeUiState.Loading -> {
+                        is SavedHeroUiState.Loading -> {
 
                         }
-                        is HomeUiState.Error->{
+                        is SavedHeroUiState.Error ->{
 
                         }
                     }
