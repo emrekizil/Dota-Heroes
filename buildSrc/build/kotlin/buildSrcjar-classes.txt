@@ -1,0 +1,1 @@
+C:\Users\Emre\AndroidStudioProjects\DotaHeroes\buildSrc\build\classes\kotlin\main\Config.class;C:\Users\Emre\AndroidStudioProjects\DotaHeroes\buildSrc\build\classes\kotlin\main\Libs.class;C:\Users\Emre\AndroidStudioProjects\DotaHeroes\buildSrc\build\classes\kotlin\main\Versions.class

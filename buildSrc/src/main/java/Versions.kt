@@ -1,0 +1,17 @@
+object Versions {
+    const val retrofit = "2.9.0"
+    const val hilt= "2.45"
+    const val coil ="2.3.0"
+    const val lifecycle = "2.6.1"
+    const val nav = "2.6.0"
+    const val datastore="1.0.0"
+    const val room = "2.5.2"
+    const val core = "1.7.0"
+    const val appcompat = "1.6.1"
+    const val material = "1.8.0"
+    const val junit = "4.13.2"
+    const val junitTest = "1.1.5"
+    const val espressoCore = "3.5.1"
+    const val legacySupport = "1.0.0"
+    const val fragment = "1.6.1"
+}
