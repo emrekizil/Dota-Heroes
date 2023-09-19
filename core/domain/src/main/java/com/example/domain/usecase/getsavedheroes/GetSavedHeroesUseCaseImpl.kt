@@ -8,5 +8,5 @@ import javax.inject.Inject
 class GetSavedHeroesUseCaseImpl @Inject constructor(
     private val repository: DotaRepository
 ) : GetSavedHeroesUseCase {
-    override operator fun invoke(): Flow<List<SavedHeroDomainEntity>> = repository.getSavedHeroes()
+    override operator fun invoke(heroName:String): Flow<List<SavedHeroDomainEntity>> = repository.getSavedHeroes(heroName)
 }

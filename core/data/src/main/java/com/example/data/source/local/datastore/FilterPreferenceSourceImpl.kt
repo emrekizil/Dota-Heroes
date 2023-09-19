@@ -17,7 +17,6 @@ class FilterPreferenceSourceImpl @Inject constructor(private val dataStore: Data
     FilterPreferenceSource {
 
     override suspend fun saveAttributePreference(filterPreference: String) {
-        println(filterPreference)
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.SELECTED_ATTRIBUTE] = filterPreference
         }

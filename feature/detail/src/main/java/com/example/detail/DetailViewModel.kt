@@ -19,7 +19,6 @@ class DetailViewModel @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-
     fun saveHero(heroUiData: HeroUiData){
         viewModelScope.launch(ioDispatcher){
             saveHeroUseCase(heroUiData.toDomainEntity())
@@ -30,6 +29,5 @@ class DetailViewModel @Inject constructor(
             deleteSavedHeroUseCase(heroUiData.toDomainEntity())
         }
     }
-
 
 }

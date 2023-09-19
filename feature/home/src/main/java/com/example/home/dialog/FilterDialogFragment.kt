@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 
 import com.example.home.databinding.FragmentFilterDialogBinding
 import com.example.ui.extension.HEROATTRIBUTE
+import com.example.ui.extension.getHeroAttributeAbbreviation
 import com.example.ui.extension.reStateAllCheckbox
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +31,6 @@ class FilterDialogFragment : DialogFragment() {
             val builder = AlertDialog.Builder(it)
             binding = FragmentFilterDialogBinding.inflate(layoutInflater)
             builder.setView(binding.root)
-            observeUiState()
             binding.checkButton.setOnClickListener {
                 val listOfCheckBox = listOf(
                     binding.noneCheckbox,
@@ -68,14 +68,6 @@ class FilterDialogFragment : DialogFragment() {
         } ?: throw IllegalStateException("Activity cannot be null")
 
     }
-
-    fun observeUiState(){
-        viewModel.getHeroAttribute()
-        viewModel.heroAttribute.observe(this){
-          //  println("güncellendi $it")
-        }
-    }
-
 
     private fun returnCheckedBox(listOfCheckBox: List<CheckBox>): CheckBox? {
         return listOfCheckBox.find { it.isChecked }

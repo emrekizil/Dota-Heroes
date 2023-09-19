@@ -10,7 +10,7 @@ interface DotaRepository {
 
     suspend fun saveAttributePreference(attributePreference:String)
 
-    fun getSavedHeroes():Flow<List<SavedHeroDomainEntity>>
+    fun getSavedHeroes(heroName: String):Flow<List<SavedHeroDomainEntity>>
 
     suspend fun saveHero(savedHeroDomainEntity: SavedHeroDomainEntity)
 

@@ -31,9 +31,9 @@ class SavedHeroViewModel @Inject constructor(
     val savedHeroUiState = _savedHeroUiState.asStateFlow()
 
 
-    fun getSavedHeroes(){
+    fun getSavedHeroes(heroName:String){
         viewModelScope.launch(ioDispatcher) {
-            getSavedHeroesUseCase().collectLatest { value ->
+            getSavedHeroesUseCase(heroName).collectLatest { value ->
                 _savedHeroUiState.update {
                     SavedHeroUiState.Success(
                         heroUiToDomainMapperImpl.map(value)

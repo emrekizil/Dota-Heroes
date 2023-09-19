@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GetSavedHeroesUseCase {
 
-    operator fun invoke():Flow<List<SavedHeroDomainEntity>>
+    operator fun invoke(heroName:String):Flow<List<SavedHeroDomainEntity>>
 }

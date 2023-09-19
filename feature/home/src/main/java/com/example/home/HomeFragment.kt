@@ -53,7 +53,6 @@ class HomeFragment : Fragment() {
         observeTextChanges()
         observeUiState()
         initView()
-        observeState()
     }
 
     private fun observeTextChanges() {
@@ -69,6 +68,7 @@ class HomeFragment : Fragment() {
 
     private fun observeUiState(){
         viewModel.getAllHero()
+        viewModel.getHeroAttribute()
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.heroHomeUiState.collect{
@@ -83,6 +83,14 @@ class HomeFragment : Fragment() {
 
                         }
                     }
+                }
+            }
+        }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.heroAttributeNew.collect{
+                    viewModel.heroAttribute = it
+                    viewModel.getAllHero()
                 }
             }
         }
@@ -103,13 +111,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun observeState() {
-        dialogViewModel.getHeroAttribute()
-        dialogViewModel.heroAttribute.observe(viewLifecycleOwner){
-            viewModel.heroAttribute = it.toString()
-            viewModel.getAllHero()
-        }
-    }
     private fun adapterOnClick(data:HeroUiData){
         val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(data)
         findNavController().navigate(action)

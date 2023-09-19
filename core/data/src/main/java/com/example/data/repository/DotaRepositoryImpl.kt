@@ -36,7 +36,7 @@ class DotaRepositoryImpl @Inject constructor(
                    NetworkResponseState.Success(heroListMapperImpl.map(response.result?.filter {
                        heroAttribute?.let { value->
                            it.primaryAttr == value
-                       } == true && it.localizedName.lowercase().contains(heroName)
+                       } == true && it.localizedName.lowercase().contains(heroName.lowercase())
                    }
                    ))
                 )
@@ -47,9 +47,11 @@ class DotaRepositoryImpl @Inject constructor(
         filterPreferenceSource.saveAttributePreference(attributePreference)
     }
 
-    override fun getSavedHeroes(): Flow<List<SavedHeroDomainEntity>> =
-        localDataSource.getSavedHeroes().map {
-            heroDbToDomainListMapperImpl.map(it)
+    override fun getSavedHeroes(heroName: String): Flow<List<SavedHeroDomainEntity>> =
+        localDataSource.getSavedHeroes().map { heroList ->
+            heroDbToDomainListMapperImpl.map(heroList.filter {
+                it.localizedName.lowercase().contains(heroName.lowercase())
+            })
         }
 
     override suspend fun saveHero(savedHeroDomainEntity: SavedHeroDomainEntity) {

@@ -20,23 +20,10 @@ class FilterDialogViewModel @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ): ViewModel() {
 
-    private val _heroAttribute = MutableLiveData<String>()
-    val heroAttribute : LiveData<String> get()  = _heroAttribute
-
     fun setHeroAttribute(heroAttribute:String){
         viewModelScope.launch(ioDispatcher) {
             setHeroAttributeUseCase(heroAttribute)
         }
     }
-
-    fun getHeroAttribute(){
-        viewModelScope.launch(ioDispatcher){
-            getHeroAttributeUseCase().collect{
-                _heroAttribute.postValue(it)
-            }
-        }
-    }
-
-
 
 }
