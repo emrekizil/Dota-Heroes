@@ -31,14 +31,62 @@
             android:layout_marginBottom="10dp"
             android:textSize="22sp" />
 
+        <CheckBox
+            android:id="@+id/hero_title_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hero_title"/>
+        <CheckBox
+            android:id="@+id/hero_title_ascending_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:visibility="gone"
+            android:checked="true"
+            android:text="@string/a_z"
+            />
+        <CheckBox
+            android:id="@+id/hero_title_descending_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:visibility="gone"
+            android:text="@string/z_a"
+           />
 
+        <CheckBox
+            android:id="@+id/pro_win_rate_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pro_win_rate"/>
+
+        <CheckBox
+            android:id="@+id/hero_win_ascending_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:visibility="gone"
+            android:checked="true"
+            android:text="@string/_100_0"
+            />
+        <CheckBox
+            android:id="@+id/hero_win_descending_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:visibility="gone"
+            android:text="@string/_0_100"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black" />
         <CheckBox
             android:id="@+id/strength_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:text="@string/strength" />
-
         <CheckBox
             android:id="@+id/agility_checkbox"
             android:layout_width="match_parent"

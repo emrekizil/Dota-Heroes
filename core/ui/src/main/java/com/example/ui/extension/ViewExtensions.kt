@@ -43,12 +43,43 @@ fun AppCompatImageView.loadImage(imageUrl: String) {
     }
 }
 
-fun CheckBox.reStateAllCheckbox(checkbox1: CheckBox, checkbox2: CheckBox, checkbox3: CheckBox) {
+fun CheckBox.reStateAllCheckbox(checkboxes:List<CheckBox>) {
     this.setOnCheckedChangeListener { compoundButton, isChecked ->
         if (isChecked) {
-            checkbox1.isChecked = false
-            checkbox2.isChecked = false
-            checkbox3.isChecked = false
+            checkboxes.forEach {
+                it.isChecked=false
+            }
+        }
+    }
+}
+
+fun reStateAllCheckbox2(checkboxes:List<CheckBox>) {
+    checkboxes.forEach { checkbox ->
+        checkbox.setOnCheckedChangeListener { compoundButton, isChecked ->
+            if (isChecked){
+                val f =checkboxes.filter {
+                    it != checkbox
+                }
+
+                f.forEach {
+                    it.isChecked = false
+                }
+            }
+
+        }
+    }
+}
+
+fun reStateAllCheckbox3(checkboxes: List<CheckBox>) {
+    checkboxes.forEachIndexed { index, checkbox ->
+        checkbox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                checkboxes.forEachIndexed { innerIndex, innerCheckbox ->
+                    if (index != innerIndex) {
+                        innerCheckbox.isChecked = false
+                    }
+                }
+            }
         }
     }
 }

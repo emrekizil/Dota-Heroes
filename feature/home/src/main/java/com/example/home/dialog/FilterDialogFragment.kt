@@ -13,6 +13,8 @@ import com.example.home.databinding.FragmentFilterDialogBinding
 import com.example.ui.extension.HEROATTRIBUTE
 import com.example.ui.extension.getHeroAttributeAbbreviation
 import com.example.ui.extension.reStateAllCheckbox
+import com.example.ui.extension.reStateAllCheckbox2
+import com.example.ui.extension.reStateAllCheckbox3
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,26 +44,31 @@ class FilterDialogFragment : DialogFragment() {
                 viewModel.setHeroAttribute(x?.text.toString())
                 dismiss()
             }
-            binding.agilityCheckbox.reStateAllCheckbox(
-                binding.intelligenceCheckbox,
-                binding.strengthCheckbox,
-                binding.noneCheckbox
-            )
-            binding.noneCheckbox.reStateAllCheckbox(
-                binding.intelligenceCheckbox,
-                binding.strengthCheckbox,
-                binding.agilityCheckbox
-            )
-            binding.strengthCheckbox.reStateAllCheckbox(
-                binding.intelligenceCheckbox,
-                binding.agilityCheckbox,
-                binding.noneCheckbox
-            )
-            binding.intelligenceCheckbox.reStateAllCheckbox(
-                binding.agilityCheckbox,
-                binding.strengthCheckbox,
-                binding.noneCheckbox
-            )
+
+            reStateAllCheckbox3(listOf(
+                binding.intelligenceCheckbox,binding.agilityCheckbox,binding.noneCheckbox,binding.strengthCheckbox
+            ) )
+
+            reStateAllCheckbox3(listOf(binding.heroWinDescendingCheckbox,binding.heroWinAscendingCheckbox))
+            reStateAllCheckbox3(listOf(binding.heroTitleDescendingCheckbox,binding.heroTitleAscendingCheckbox))
+
+
+            binding.heroTitleCheckbox.setOnCheckedChangeListener { _, isChecked ->
+                binding.heroTitleAscendingCheckbox.visibility = if (isChecked) View.VISIBLE else View.GONE
+                binding.heroTitleDescendingCheckbox.visibility = if (isChecked) View.VISIBLE else View.GONE
+               if (isChecked){
+                   binding.proWinRateCheckbox.isChecked = false
+               }
+            }
+
+            binding.proWinRateCheckbox.setOnCheckedChangeListener { _, isChecked ->
+                binding.heroWinAscendingCheckbox.visibility = if (isChecked) View.VISIBLE else View.GONE
+                binding.heroWinDescendingCheckbox.visibility = if (isChecked) View.VISIBLE else View.GONE
+                if (isChecked){
+                    binding.heroTitleCheckbox.isChecked = false
+                }
+            }
+
             val heroArgument = arguments?.getString("attribute")
             checkAttribute(heroArgument)
             builder.create()

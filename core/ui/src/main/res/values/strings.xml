@@ -5,4 +5,8 @@
     <string name="base_hero_stat_interval">%1$s - %2$s</string>
     <string name="saved_fragment_title">Saved</string>
     <string name="home_fragment_title">Search</string>
+    <string name="hero_title">Hero</string>
+    <string name="a_z"><![CDATA[a -> z]]></string>
+    <string name="z_a"><![CDATA[z -> a]]></string>
+    <string name="pro_win_rate">Pro win rate</string>
 </resources>

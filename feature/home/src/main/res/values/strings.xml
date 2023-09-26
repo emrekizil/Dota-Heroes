@@ -9,4 +9,6 @@
     <string name="intelligence">Intelligence</string>
     <string name="none">None</string>
     <string name="filter_hero">Filter Hero</string>
+    <string name="_0_100">0% - 100%</string>
+    <string name="_100_0">100% - 0%</string>
 </resources>
