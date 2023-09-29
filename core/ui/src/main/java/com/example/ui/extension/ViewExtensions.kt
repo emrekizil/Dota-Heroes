@@ -1,6 +1,5 @@
 package com.example.ui.extension
 
-import android.annotation.SuppressLint
 import android.widget.CheckBox
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageView
@@ -10,7 +9,6 @@ import coil.load
 import coil.size.Scale
 import com.example.ui.R
 import com.example.ui.contract.AbstractTextWatcher
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -43,34 +41,8 @@ fun AppCompatImageView.loadImage(imageUrl: String) {
     }
 }
 
-fun CheckBox.reStateAllCheckbox(checkboxes:List<CheckBox>) {
-    this.setOnCheckedChangeListener { compoundButton, isChecked ->
-        if (isChecked) {
-            checkboxes.forEach {
-                it.isChecked=false
-            }
-        }
-    }
-}
 
-fun reStateAllCheckbox2(checkboxes:List<CheckBox>) {
-    checkboxes.forEach { checkbox ->
-        checkbox.setOnCheckedChangeListener { compoundButton, isChecked ->
-            if (isChecked){
-                val f =checkboxes.filter {
-                    it != checkbox
-                }
-
-                f.forEach {
-                    it.isChecked = false
-                }
-            }
-
-        }
-    }
-}
-
-fun reStateAllCheckbox3(checkboxes: List<CheckBox>) {
+fun reStateAllCheckbox(checkboxes: List<CheckBox>) {
     checkboxes.forEachIndexed { index, checkbox ->
         checkbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {

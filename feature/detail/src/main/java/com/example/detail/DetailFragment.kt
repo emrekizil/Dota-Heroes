@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.example.detail.databinding.FragmentDetailBinding
 import com.example.ui.HeroUiData
@@ -13,6 +16,7 @@ import com.example.ui.extension.getHeroAttributeAllName
 import com.example.ui.extension.getHeroPercentageAndColor
 import com.example.ui.extension.loadImage
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
@@ -35,7 +39,25 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView(args.heroUiData)
+        observeState()
     }
+
+    private fun observeState() {
+        viewModel.isHeroExist(args.heroUiData.id)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.isHeroExistState.collect{
+                    if (it){
+                        binding.bookmarkButtonView.setImageResource(com.example.ui.R.drawable.ic_remove_bookmark)
+                    }else{
+                        binding.bookmarkButtonView.setImageResource(com.example.ui.R.drawable.ic_add_bookmark)
+                    }
+                }
+            }
+        }
+    }
+
+
 
     private fun setupView(heroUiData: HeroUiData) {
         binding.apply {
@@ -54,9 +76,20 @@ class DetailFragment : Fragment() {
             heroIntelligenceValueTextView.text = getString(com.example.ui.R.string.base_hero_stat_addition,heroUiData.baseInt.toString(),heroUiData.intGain.toString())
             heroAttackDamageValueTextView.text = getString(com.example.ui.R.string.base_hero_stat_addition,heroUiData.baseAttackMin.toString(),heroUiData.baseAttackMax.toString())
             heroIconImageView.loadImage("https://api.opendota.com"+ heroUiData.icon)
-            bookmarkButtonView.setOnClickListener {
-                viewModel.saveHero(heroUiData)
+            handleBookmarkState()
+        }
+    }
+
+    private fun handleBookmarkState() {
+        binding.bookmarkButtonView.setOnClickListener {
+            if (!viewModel.innerState){
+                binding.bookmarkButtonView.setImageResource(com.example.ui.R.drawable.ic_remove_bookmark)
+                viewModel.saveHero(args.heroUiData)
+            }else{
+                binding.bookmarkButtonView.setImageResource(com.example.ui.R.drawable.ic_add_bookmark)
+                viewModel.deleteSavedHero(args.heroUiData)
             }
+            viewModel.setInnerState()
         }
     }
 }

@@ -9,4 +9,6 @@ interface LocalDataSource {
     suspend fun deleteSavedHero(savedHeroEntity: SavedHeroEntity)
 
     fun getSavedHeroes(): Flow<List<SavedHeroEntity>>
+
+    suspend fun isHeroExist(heroId : Int):Boolean
 }

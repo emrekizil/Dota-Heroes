@@ -16,4 +16,6 @@ interface DotaRepository {
 
     suspend fun deleteSavedHero(savedHeroDomainEntity: SavedHeroDomainEntity)
     fun getAttributePreference():Flow<String>
+
+    suspend fun isHeroExist(heroId:Int):Boolean
 }

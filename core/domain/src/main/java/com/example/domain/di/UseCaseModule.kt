@@ -8,6 +8,8 @@ import com.example.domain.usecase.getheroattribute.GetHeroAttributeUseCase
 import com.example.domain.usecase.getheroattribute.GetHeroAttributeUseCaseImpl
 import com.example.domain.usecase.getsavedheroes.GetSavedHeroesUseCase
 import com.example.domain.usecase.getsavedheroes.GetSavedHeroesUseCaseImpl
+import com.example.domain.usecase.isheroexist.IsHeroExistUseCase
+import com.example.domain.usecase.isheroexist.IsHeroExistUseCaseImpl
 import com.example.domain.usecase.savehero.SaveHeroUseCase
 import com.example.domain.usecase.savehero.SaveHeroUseCaseImpl
 import com.example.domain.usecase.setheroattribute.SetHeroAttributeUseCase
@@ -45,4 +47,8 @@ abstract class UseCaseModule {
     @Binds
     @ViewModelScoped
     abstract fun bindSaveHeroUseCase(saveHeroUseCaseImpl: SaveHeroUseCaseImpl) : SaveHeroUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindIsHeroExistUseCase(isHeroExistUseCaseImpl: IsHeroExistUseCaseImpl):IsHeroExistUseCase
 }

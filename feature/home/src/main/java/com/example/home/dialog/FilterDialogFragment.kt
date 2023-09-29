@@ -2,7 +2,6 @@ package com.example.home.dialog
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
@@ -11,10 +10,7 @@ import androidx.fragment.app.viewModels
 
 import com.example.home.databinding.FragmentFilterDialogBinding
 import com.example.ui.extension.HEROATTRIBUTE
-import com.example.ui.extension.getHeroAttributeAbbreviation
 import com.example.ui.extension.reStateAllCheckbox
-import com.example.ui.extension.reStateAllCheckbox2
-import com.example.ui.extension.reStateAllCheckbox3
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -45,26 +41,41 @@ class FilterDialogFragment : DialogFragment() {
                 dismiss()
             }
 
-            reStateAllCheckbox3(listOf(
-                binding.intelligenceCheckbox,binding.agilityCheckbox,binding.noneCheckbox,binding.strengthCheckbox
-            ) )
+            reStateAllCheckbox(
+                listOf(
+                    binding.intelligenceCheckbox,
+                    binding.agilityCheckbox,
+                    binding.noneCheckbox,
+                    binding.strengthCheckbox
+                )
+            )
 
-            reStateAllCheckbox3(listOf(binding.heroWinDescendingCheckbox,binding.heroWinAscendingCheckbox))
-            reStateAllCheckbox3(listOf(binding.heroTitleDescendingCheckbox,binding.heroTitleAscendingCheckbox))
+            reStateAllCheckbox(
+                listOf(
+                    binding.heroWinDescendingCheckbox,
+                    binding.heroWinAscendingCheckbox,
+                    binding.heroTitleDescendingCheckbox,
+                    binding.heroTitleAscendingCheckbox
+                )
+            )
 
 
             binding.heroTitleCheckbox.setOnCheckedChangeListener { _, isChecked ->
-                binding.heroTitleAscendingCheckbox.visibility = if (isChecked) View.VISIBLE else View.GONE
-                binding.heroTitleDescendingCheckbox.visibility = if (isChecked) View.VISIBLE else View.GONE
-               if (isChecked){
-                   binding.proWinRateCheckbox.isChecked = false
-               }
+                binding.heroTitleAscendingCheckbox.visibility =
+                    if (isChecked) View.VISIBLE else View.GONE
+                binding.heroTitleDescendingCheckbox.visibility =
+                    if (isChecked) View.VISIBLE else View.GONE
+                if (isChecked) {
+                    binding.proWinRateCheckbox.isChecked = false
+                }
             }
 
             binding.proWinRateCheckbox.setOnCheckedChangeListener { _, isChecked ->
-                binding.heroWinAscendingCheckbox.visibility = if (isChecked) View.VISIBLE else View.GONE
-                binding.heroWinDescendingCheckbox.visibility = if (isChecked) View.VISIBLE else View.GONE
-                if (isChecked){
+                binding.heroWinAscendingCheckbox.visibility =
+                    if (isChecked) View.VISIBLE else View.GONE
+                binding.heroWinDescendingCheckbox.visibility =
+                    if (isChecked) View.VISIBLE else View.GONE
+                if (isChecked) {
                     binding.heroTitleCheckbox.isChecked = false
                 }
             }
@@ -80,8 +91,18 @@ class FilterDialogFragment : DialogFragment() {
         return listOfCheckBox.find { it.isChecked }
     }
 
-    private fun checkAttribute(heroAttribute:String?){
-        when(heroAttribute){
+    private fun returnCheckedValue(sortAttribute: String): String {
+       return when (sortAttribute){
+            "a -> z" -> "a"
+            "z -> a" -> "z"
+            "0% - 100%" -> "0"
+            "100% - 0%" -> "100"
+            else -> ""
+       }
+    }
+
+    private fun checkAttribute(heroAttribute: String?) {
+        when (heroAttribute) {
             HEROATTRIBUTE.STRENGTH.heroAttribute -> binding.strengthCheckbox.isChecked = true
             HEROATTRIBUTE.INTELLIGENCE.heroAttribute -> binding.intelligenceCheckbox.isChecked = true
             HEROATTRIBUTE.NONE.heroAttribute -> binding.noneCheckbox.isChecked = true

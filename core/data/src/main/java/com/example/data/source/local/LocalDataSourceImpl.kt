@@ -17,4 +17,8 @@ class LocalDataSourceImpl @Inject constructor(
     }
 
     override fun getSavedHeroes(): Flow<List<SavedHeroEntity>>  = heroDao.getSavedHeroes()
+    override suspend fun isHeroExist(heroId: Int): Boolean
+       = heroDao.isHeroExist(heroId)
+
+
 }

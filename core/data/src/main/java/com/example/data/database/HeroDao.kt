@@ -20,4 +20,7 @@ interface HeroDao {
     @Query("SELECT * FROM saved_heroes ORDER BY id ASC")
     fun getSavedHeroes(): Flow<List<SavedHeroEntity>>
 
+    @Query("SELECT EXISTS (SELECT * FROM saved_heroes WHERE id = :id)")
+    suspend fun isHeroExist(id:Int) : Boolean
+
 }

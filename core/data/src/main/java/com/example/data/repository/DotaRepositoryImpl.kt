@@ -65,4 +65,6 @@ class DotaRepositoryImpl @Inject constructor(
 
     override fun getAttributePreference(): Flow<String> =
         filterPreferenceSource.getAttributePreference()
+
+    override suspend fun isHeroExist(heroId: Int): Boolean = localDataSource.isHeroExist(heroId)
 }
