@@ -11,7 +11,8 @@ class GetAllHeroesUseCaseImpl @Inject constructor(
 ) : GetAllHeroesUseCase {
     override fun invoke(
         heroName: String,
-        heroAttribute: String?
+        heroAttribute: String?,
+        sortingPref:String
     ): Flow<NetworkResponseState<List<HeroEntity>>> =
-        repository.getAllHeroes(heroName, heroAttribute)
+        repository.getAllHeroes(heroName, heroAttribute,sortingPref)
 }

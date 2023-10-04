@@ -2,8 +2,10 @@ package com.example.data.repository
 
 import com.example.common.NetworkResponseState
 import com.example.common.di.IoDispatcher
+import com.example.data.mapper.FilterHeroes
 import com.example.data.mapper.HeroDbToDomainListMapperImpl
 import com.example.data.mapper.HeroListMapperImpl
+import com.example.data.mapper.calculatePercentage
 import com.example.data.mapper.toDatabaseEntity
 import com.example.data.source.local.LocalDataSource
 import com.example.data.source.local.datastore.FilterPreferenceSource
@@ -24,21 +26,25 @@ class DotaRepositoryImpl @Inject constructor(
     private val heroListMapperImpl: HeroListMapperImpl,
     private val localDataSource: LocalDataSource,
     private val heroDbToDomainListMapperImpl: HeroDbToDomainListMapperImpl,
-    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+    private val filterHeroes: FilterHeroes,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) : DotaRepository {
-    override fun getAllHeroes(heroName:String, heroAttribute:String?): Flow<NetworkResponseState<List<HeroEntity>>> =
+    override fun getAllHeroes(
+        heroName: String,
+        heroAttribute: String?,
+        sortingPref: String,
+    ): Flow<NetworkResponseState<List<HeroEntity>>> =
         flow {
             emit(NetworkResponseState.Loading)
-            when(val response = remoteDataSource.getAllHeroes()){
-                is NetworkResponseState.Loading-> Unit
+            when (val response = remoteDataSource.getAllHeroes()) {
+                is NetworkResponseState.Loading -> Unit
                 is NetworkResponseState.Error -> emit(response)
                 is NetworkResponseState.Success -> emit(
-                   NetworkResponseState.Success(heroListMapperImpl.map(response.result?.filter {
-                       heroAttribute?.let { value->
-                           it.primaryAttr == value
-                       } == true && it.localizedName.lowercase().contains(heroName.lowercase())
-                   }
-                   ))
+                    NetworkResponseState.Success(heroListMapperImpl.map(response.result?.let {
+                        filterHeroes.execute(
+                            it, heroName, heroAttribute, sortingPref
+                        )
+                    }))
                 )
             }
         }.flowOn(ioDispatcher)
@@ -65,6 +71,14 @@ class DotaRepositoryImpl @Inject constructor(
 
     override fun getAttributePreference(): Flow<String> =
         filterPreferenceSource.getAttributePreference()
+
+    override suspend fun saveSortingPreference(sortingPreference: String) {
+        filterPreferenceSource.saveSortingPreference(sortingPreference)
+    }
+
+    override fun getSortingPreference(): Flow<String> =
+        filterPreferenceSource.getSortingPreference()
+
 
     override suspend fun isHeroExist(heroId: Int): Boolean = localDataSource.isHeroExist(heroId)
 }

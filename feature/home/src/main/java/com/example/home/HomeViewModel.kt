@@ -8,6 +8,8 @@ import com.example.common.mapper.HeroListMapper
 import com.example.domain.entity.HeroEntity
 import com.example.domain.usecase.getallheroes.GetAllHeroesUseCase
 import com.example.domain.usecase.getheroattribute.GetHeroAttributeUseCase
+import com.example.domain.usecase.getsortingpreference.GetSortingPreferenceUseCase
+import com.example.domain.usecase.setsortingpreference.SetSortingPreferenceUseCase
 import com.example.ui.HeroUiData
 import com.example.ui.extension.getHeroAttributeAbbreviation
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,6 +28,7 @@ class HomeViewModel @Inject constructor(
     private val getAllHeroesUseCase: GetAllHeroesUseCase,
     private val heroListMapper: HeroListMapper<HeroEntity,HeroUiData>,
     private val getHeroAttributeUseCase: GetHeroAttributeUseCase,
+    private val getSortingPreferenceUseCase: GetSortingPreferenceUseCase,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
@@ -37,14 +40,20 @@ class HomeViewModel @Inject constructor(
 
     val heroAttributeNew = _heroAttribute.asStateFlow()
 
+    private val _sortingPreference = MutableStateFlow("a")
+
+    val sortingPreference = _sortingPreference.asStateFlow()
+
     var heroName:String = ""
 
     var heroAttribute:String? = null
 
+    var sortingPref : String = ""
+
 
     fun getAllHero(){
         viewModelScope.launch(ioDispatcher) {
-            getAllHeroesUseCase(heroName,getHeroAttributeAbbreviation(heroAttribute)).collectLatest {value->
+            getAllHeroesUseCase(heroName,getHeroAttributeAbbreviation(heroAttribute),sortingPref).collectLatest {value->
                 when(value){
                     is NetworkResponseState.Loading ->{
                         _heroHomeUiState.update {
@@ -75,6 +84,16 @@ class HomeViewModel @Inject constructor(
             getHeroAttributeUseCase().collect{attribute->
                 _heroAttribute.update {
                     attribute
+                }
+            }
+        }
+    }
+
+    fun getSortingPreference(){
+        viewModelScope.launch (ioDispatcher){
+            getSortingPreferenceUseCase().collect{preference ->
+                _sortingPreference.update {
+                    preference
                 }
             }
         }

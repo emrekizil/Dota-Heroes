@@ -66,27 +66,34 @@ fun AppCompatTextView.getHeroPercentageAndColor(heroWinRate: Int) {
     text = "$heroWinRate%"
 }
 
-enum class HEROATTRIBUTE(val heroAttribute: String) {
+enum class HeroAttribute(val heroAttribute: String) {
     STRENGTH("Strength"),
     AGILITY("Agility"),
     INTELLIGENCE("Intelligence"),
     NONE("None")
 }
 
+enum class QueueAttribute(val queueAttribute: String){
+    ASCTITLE("a"),
+    DESCTITLE("z"),
+    ASCWIN("100"),
+    DESCWIN("0")
+}
+
 fun getHeroAttributeAbbreviation(heroAttribute: String?): String =
     when (heroAttribute) {
-        HEROATTRIBUTE.NONE.heroAttribute -> "all"
-        HEROATTRIBUTE.AGILITY.heroAttribute -> "agi"
-        HEROATTRIBUTE.INTELLIGENCE.heroAttribute -> "int"
-        HEROATTRIBUTE.STRENGTH.heroAttribute -> "str"
+        HeroAttribute.NONE.heroAttribute -> "all"
+        HeroAttribute.AGILITY.heroAttribute -> "agi"
+        HeroAttribute.INTELLIGENCE.heroAttribute -> "int"
+        HeroAttribute.STRENGTH.heroAttribute -> "str"
         else -> ""
     }
 
 fun getHeroAttributeAllName(heroAttribute: String): String =
     when (heroAttribute) {
-        "all" -> HEROATTRIBUTE.NONE.heroAttribute
-        "agi" -> HEROATTRIBUTE.AGILITY.heroAttribute
-        "int" -> HEROATTRIBUTE.INTELLIGENCE.heroAttribute
-        "str" -> HEROATTRIBUTE.STRENGTH.heroAttribute
+        "all" -> HeroAttribute.NONE.heroAttribute
+        "agi" -> HeroAttribute.AGILITY.heroAttribute
+        "int" -> HeroAttribute.INTELLIGENCE.heroAttribute
+        "str" -> HeroAttribute.STRENGTH.heroAttribute
         else -> ""
     }

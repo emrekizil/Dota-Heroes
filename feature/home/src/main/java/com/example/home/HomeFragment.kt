@@ -1,10 +1,10 @@
 package com.example.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -17,7 +17,11 @@ import com.example.ui.HeroUiData
 import com.example.ui.extension.observeTextChanges
 import com.example.ui.extension.okWith
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 
@@ -27,8 +31,6 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel by viewModels<HomeViewModel>()
-
-    private val dialogViewModel by viewModels<FilterDialogViewModel>()
 
     private val adapter :HeroRecyclerViewAdapter by lazy {
         HeroRecyclerViewAdapter{data ->
@@ -67,8 +69,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeUiState(){
-        viewModel.getAllHero()
         viewModel.getHeroAttribute()
+        viewModel.getAllHero()
+        viewModel.getSortingPreference()
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.heroHomeUiState.collect{
@@ -94,6 +97,14 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.sortingPreference.collect{
+                    viewModel.sortingPref = it
+                    viewModel.getAllHero()
+                }
+            }
+        }
     }
 
     private fun handleSuccessUiState(data: List<HeroUiData>) {
@@ -104,6 +115,7 @@ class HomeFragment : Fragment() {
             val filterDialogFragment = FilterDialogFragment()
             val args = Bundle()
             args.putString("attribute",viewModel.heroAttribute)
+            args.putString("sorting",viewModel.sortingPref)
             filterDialogFragment.arguments = args
             filterDialogFragment.show(
                 childFragmentManager, FilterDialogFragment.TAG

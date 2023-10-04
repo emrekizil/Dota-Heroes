@@ -35,8 +35,30 @@ class FilterPreferenceSourceImpl @Inject constructor(private val dataStore: Data
                 ?: ""
         }
 
+    override suspend fun saveSortingPreference(sortingPreference: String) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.SELECTED_SORTING] = sortingPreference
+        }
+    }
+
+    override fun getSortingPreference(): Flow<String> =
+        dataStore.data.catch {exception->
+            if (exception is IOException){
+                Log.e("Error", "Error reading preferences", exception)
+                emit(emptyPreferences())
+            }else{
+                throw exception
+            }
+
+        }.map { preferences ->
+            preferences[PreferencesKeys.SELECTED_SORTING] ?: ""
+        }
+
+
+
     private object PreferencesKeys {
         val SELECTED_ATTRIBUTE = stringPreferencesKey("attribute")
+        val SELECTED_SORTING = stringPreferencesKey("sorting")
     }
 
 }

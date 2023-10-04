@@ -8,12 +8,16 @@ import com.example.domain.usecase.getheroattribute.GetHeroAttributeUseCase
 import com.example.domain.usecase.getheroattribute.GetHeroAttributeUseCaseImpl
 import com.example.domain.usecase.getsavedheroes.GetSavedHeroesUseCase
 import com.example.domain.usecase.getsavedheroes.GetSavedHeroesUseCaseImpl
+import com.example.domain.usecase.getsortingpreference.GetSortingPreferenceUseCase
+import com.example.domain.usecase.getsortingpreference.GetSortingPreferenceUseCaseImpl
 import com.example.domain.usecase.isheroexist.IsHeroExistUseCase
 import com.example.domain.usecase.isheroexist.IsHeroExistUseCaseImpl
 import com.example.domain.usecase.savehero.SaveHeroUseCase
 import com.example.domain.usecase.savehero.SaveHeroUseCaseImpl
 import com.example.domain.usecase.setheroattribute.SetHeroAttributeUseCase
 import com.example.domain.usecase.setheroattribute.SetHeroAttributeUseCaseImpl
+import com.example.domain.usecase.setsortingpreference.SetSortingPreferenceUseCase
+import com.example.domain.usecase.setsortingpreference.SetSortingPreferenceUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -51,4 +55,12 @@ abstract class UseCaseModule {
     @Binds
     @ViewModelScoped
     abstract fun bindIsHeroExistUseCase(isHeroExistUseCaseImpl: IsHeroExistUseCaseImpl):IsHeroExistUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindSetSortingPreferenceUseCase(setSortingPreferenceUseCaseImpl: SetSortingPreferenceUseCaseImpl):SetSortingPreferenceUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindGetSortingPreferenceUseCase(getSortingPreferenceUseCaseImpl: GetSortingPreferenceUseCaseImpl):GetSortingPreferenceUseCase
 }
