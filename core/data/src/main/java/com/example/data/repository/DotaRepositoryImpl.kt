@@ -2,10 +2,11 @@ package com.example.data.repository
 
 import com.example.common.NetworkResponseState
 import com.example.common.di.IoDispatcher
+import com.example.data.mapper.CacheToDotaResponseListImpl
+import com.example.data.mapper.DotaResponseListToCacheMapperImpl
 import com.example.data.mapper.FilterHeroes
 import com.example.data.mapper.HeroDbToDomainListMapperImpl
 import com.example.data.mapper.HeroListMapperImpl
-import com.example.data.mapper.calculatePercentage
 import com.example.data.mapper.toDatabaseEntity
 import com.example.data.source.local.LocalDataSource
 import com.example.data.source.local.datastore.FilterPreferenceSource
@@ -27,6 +28,8 @@ class DotaRepositoryImpl @Inject constructor(
     private val localDataSource: LocalDataSource,
     private val heroDbToDomainListMapperImpl: HeroDbToDomainListMapperImpl,
     private val filterHeroes: FilterHeroes,
+    private val cacheToDotaResponseListImpl: CacheToDotaResponseListImpl,
+    private val dotaResponseListToCacheMapperImpl: DotaResponseListToCacheMapperImpl,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) : DotaRepository {
     override fun getAllHeroes(
@@ -38,14 +41,30 @@ class DotaRepositoryImpl @Inject constructor(
             emit(NetworkResponseState.Loading)
             when (val response = remoteDataSource.getAllHeroes()) {
                 is NetworkResponseState.Loading -> Unit
-                is NetworkResponseState.Error -> emit(response)
-                is NetworkResponseState.Success -> emit(
-                    NetworkResponseState.Success(heroListMapperImpl.map(response.result?.let {
-                        filterHeroes.execute(
-                            it, heroName, heroAttribute, sortingPref
+                is NetworkResponseState.Error -> {
+                    val cachedHeroes = cacheToDotaResponseListImpl.map(localDataSource.getAllCachedHeroes())
+                    emit(NetworkResponseState.Success(
+                        heroListMapperImpl.map(
+                            filterHeroes.execute(
+                                cachedHeroes,heroName,heroAttribute,sortingPref
+                            )
                         )
-                    }))
-                )
+                    ))
+                }
+                is NetworkResponseState.Success -> {
+                    localDataSource.insertHeroes(dotaResponseListToCacheMapperImpl.map(response.result))
+                    val cachedHeroes =
+                        cacheToDotaResponseListImpl.map(localDataSource.getAllCachedHeroes())
+                    emit(
+                        NetworkResponseState.Success(
+                            heroListMapperImpl.map(
+                                filterHeroes.execute(
+                                    cachedHeroes, heroName, heroAttribute, sortingPref
+                                )
+                            )
+                        )
+                    )
+                }
             }
         }.flowOn(ioDispatcher)
 
