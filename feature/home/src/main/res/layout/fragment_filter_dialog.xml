@@ -20,16 +20,10 @@
             android:layout_height="wrap_content"
             android:text="@string/filter_hero"
             android:textSize="22sp"
-            android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginBottom="10dp"
             />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/primary_attribute"
-            android:layout_marginBottom="10dp"
-            android:textSize="22sp" />
 
         <CheckBox
             android:id="@+id/hero_title_checkbox"
@@ -79,6 +73,14 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/primary_attribute"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            android:textSize="22sp" />
+
         <CheckBox
             android:id="@+id/strength_checkbox"
             android:layout_width="match_parent"
@@ -112,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="15dp"
-            android:backgroundTint="@color/bar_color"
+            android:backgroundTint="@color/background_color"
             android:src="@drawable/check_icon" />
 
     </LinearLayout>

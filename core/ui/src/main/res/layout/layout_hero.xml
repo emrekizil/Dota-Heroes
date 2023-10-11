@@ -8,52 +8,57 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="16dp"
+        android:layout_marginHorizontal="4dp"
+        app:cardCornerRadius="4dp"
+        app:cardBackgroundColor="@color/bar_color"
         >
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/hero_image"
                 android:layout_width="120dp"
                 android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/hero_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_marginTop="6dp"
                 android:layout_marginLeft="4dp"
-                android:textColor="@color/black"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/background_color"
+                android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@id/hero_image"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text = "Hero"/>
+                tools:text="Hero" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/hero_attribute"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
                 android:layout_marginTop="4dp"
-                android:textColor="@color/black"
+                android:textColor="@color/background_color"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@id/hero_name"
                 app:layout_constraintTop_toBottomOf="@id/hero_name"
-                tools:text="Strength"/>
+                tools:text="Strength" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/hero_winrate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@color/green"
                 android:layout_marginRight="8dp"
+                android:textColor="@color/green"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/hero_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/hero_image"
-                tools:text="56%"/>
+                tools:text="56%" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,23 +32,29 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/text_input_layout"
-                style="?attr/textInputFilledStyle"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginVertical="8dp"
                 android:layout_weight="2"
                 android:hint="@string/search_hero"
-                app:boxStrokeColor="@color/label_color"
-                app:hintTextColor="@color/label_color"
-                app:startIconDrawable="@drawable/baseline_search_24">
+                style="?attr/textInputFilledStyle"
+                android:textColorHint="@color/white"
+                app:hintAnimationEnabled="true"
+                app:boxStrokeColor="@color/white"
+                app:boxStrokeWidth="2dp"
+                app:hintTextColor="@color/white"
+                app:startIconTint="@color/white"
+                app:startIconDrawable="@drawable/baseline_search_24"
+                >
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/search_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/cardview_light_background"
-                    android:textColorHint="@color/label_color" />
+                    android:background="@color/bar_color"
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,6 +67,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/bar_color"
                 android:contentDescription="@string/option"
+                app:tint="@color/white"
                 android:src="@drawable/options_icon"
                 tools:src="@drawable/options_icon" />
 

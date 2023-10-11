@@ -35,9 +35,24 @@ class FilterHeroes @Inject constructor(){
             }
         }
 
-        filteredList = filteredList.filter {
-            it.primaryAttr == heroAttribute
-        }.toMutableList()
+
+        when(heroAttribute){
+            "agi" ->{
+                filteredList = filteredList.filter {
+                    it.primaryAttr == heroAttribute
+                }.toMutableList()
+            }
+            "int" ->{
+                filteredList = filteredList.filter {
+                    it.primaryAttr == heroAttribute
+                }.toMutableList()
+            }
+            "str" ->{
+                filteredList = filteredList.filter {
+                    it.primaryAttr == heroAttribute
+                }.toMutableList()
+            }
+        }
 
         return filteredList
     }

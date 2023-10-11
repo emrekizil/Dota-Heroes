@@ -39,17 +39,21 @@
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginVertical="8dp"
                 android:layout_weight="2"
+                android:textColorHint="@color/white"
+                app:hintAnimationEnabled="true"
+                app:boxStrokeColor="@color/white"
                 android:hint="@string/search_hero"
-                app:boxStrokeColor="@color/label_color"
-                app:hintTextColor="@color/label_color"
+                app:boxStrokeWidth="2dp"
+                app:hintTextColor="@color/white"
+                app:startIconTint="@color/white"
                 app:startIconDrawable="@drawable/baseline_search_24">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/search_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/cardview_light_background"
-                    android:textColorHint="@color/label_color" />
+                    android:background="@color/bar_color"
+                    android:textColor="@color/white" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

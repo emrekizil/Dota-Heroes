@@ -76,6 +76,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginRight="8dp"
         app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/bar_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hero_attack_type_text_view">
@@ -91,7 +92,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/base_stats"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -103,7 +104,7 @@
                 android:layout_marginTop="12dp"
                 android:text="@string/strength"
                 android:textSize="13sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="@id/hero_base_stats_text_view"
                 app:layout_constraintTop_toBottomOf="@id/hero_base_stats_text_view" />
 
@@ -114,7 +115,7 @@
                 android:layout_marginTop="12dp"
                 android:text="@string/agility"
                 android:textSize="13sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="@id/hero_base_stats_text_view"
                 app:layout_constraintTop_toBottomOf="@id/hero_strength_text_view" />
 
@@ -124,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="@string/intelligence"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="@id/hero_base_stats_text_view"
                 app:layout_constraintTop_toBottomOf="@id/hero_agility_text_view" />
@@ -135,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="@string/health"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="@id/hero_base_stats_text_view"
                 app:layout_constraintTop_toBottomOf="@id/hero_intelligence_text_view" />
@@ -146,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="180dp"
                 android:text="@string/attack_range"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="@id/hero_base_stats_text_view"
                 app:layout_constraintTop_toTopOf="@id/hero_strength_text_view" />
@@ -156,7 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/projectile_speed"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="@id/hero_attack_range_text_view"
                 app:layout_constraintTop_toTopOf="@id/hero_agility_text_view" />
@@ -166,7 +167,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/move_speed"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="@id/hero_attack_range_text_view"
                 app:layout_constraintTop_toTopOf="@id/hero_intelligence_text_view" />
@@ -176,7 +177,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/attack_damage"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="@id/hero_attack_range_text_view"
                 app:layout_constraintTop_toTopOf="@id/hero_health_text_view" />
@@ -186,7 +187,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toStartOf="@id/hero_attack_range_text_view"
                 app:layout_constraintTop_toTopOf="@id/hero_strength_text_view" />
@@ -196,7 +197,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toStartOf="@id/hero_projectile_speed_text_view"
                 app:layout_constraintTop_toTopOf="@id/hero_agility_text_view" />
@@ -206,7 +207,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toStartOf="@id/hero_move_speed_text_view"
                 app:layout_constraintTop_toTopOf="@id/hero_intelligence_text_view" />
@@ -216,7 +217,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toStartOf="@id/hero_attack_damage_text_view"
                 app:layout_constraintTop_toTopOf="@id/hero_health_text_view" />
@@ -226,7 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/hero_attack_range_text_view" />
@@ -235,7 +236,7 @@
                 android:id="@+id/hero_projectile_speed_value_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="@id/hero_attack_range_value_text_view"
                 app:layout_constraintTop_toTopOf="@id/hero_projectile_speed_text_view" />
@@ -244,7 +245,7 @@
                 android:id="@+id/hero_move_speed_value_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="@id/hero_attack_range_value_text_view"
                 app:layout_constraintTop_toTopOf="@id/hero_move_speed_text_view" />
@@ -253,7 +254,7 @@
                 android:id="@+id/hero_attack_damage_value_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="@id/hero_attack_range_value_text_view"
                 app:layout_constraintTop_toTopOf="@id/hero_attack_damage_text_view" />
