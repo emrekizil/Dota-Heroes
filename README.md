@@ -30,7 +30,7 @@
   - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) is a class that holds the information about the lifecycle state of a component (like an activity or a fragment) and allows other objects to observe this state
 - [Navigation Component](https://developer.android.com/guide/navigation) refers to the interactions that allow users to navigate across, into, and back out from the different pieces of content within the app
 - [Retrofit](https://square.github.io/retrofit/) A type-safe HTTP client for Android and Java
-- [Gson]()
+- [Gson](https://github.com/google/gson) is a Java library that can be used to convert Java Objects into their JSON representation. 
 - [Dagger Hilt](https://dagger.dev/hilt/) Hilt provides a standard way to incorporate Dagger dependency injection into an Android application
 - [Coil](https://coil-kt.github.io/coil/) An image loading library for Android backed by Kotlin Coroutines
 - [Room](https://developer.android.com/training/data-storage/room) persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
