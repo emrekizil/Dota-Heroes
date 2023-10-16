@@ -1,4 +1,4 @@
-package com.example.ui.mapper
+package com.example.detail
 
 import com.example.domain.entity.SavedHeroDomainEntity
 import com.example.ui.HeroUiData

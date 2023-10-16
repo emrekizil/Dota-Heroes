@@ -7,12 +7,9 @@ import com.example.domain.usecase.deletesavedhero.DeleteSavedHeroUseCase
 import com.example.domain.usecase.isheroexist.IsHeroExistUseCase
 import com.example.domain.usecase.savehero.SaveHeroUseCase
 import com.example.ui.HeroUiData
-import com.example.ui.mapper.toDomainEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch

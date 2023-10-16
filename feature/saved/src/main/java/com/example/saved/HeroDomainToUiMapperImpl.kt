@@ -6,7 +6,7 @@ import com.example.ui.HeroUiData
 import javax.inject.Inject
 
 
-class HeroUiToDomainMapperImpl @Inject constructor() : HeroListMapper<SavedHeroDomainEntity,HeroUiData>{
+class HeroDomainToUiMapperImpl @Inject constructor() : HeroListMapper<SavedHeroDomainEntity,HeroUiData>{
     override fun map(input: List<SavedHeroDomainEntity>?): List<HeroUiData> {
 
         return input?.map {
